@@ -1,5 +1,9 @@
 package com.fitec.formation.wiki.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
@@ -8,8 +12,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import java.io.Serializable;
 
+
 @Embeddable
 @Table(name = "T_ADDRESS")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Address implements Serializable {
 
     private static final Long serialVersionUID = 1L;
@@ -27,57 +35,10 @@ public class Address implements Serializable {
     @Column(name = "COUNTRY")
     private String country;
 
-    public Address() {
-    }
-
     public Address(String street, String city, String zipcode, String country) {
         this.street = street;
         this.city = city;
         this.zipcode = zipcode;
-        this.country = country;
-    }
-
-    public static Long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    public Long getIdAddress() {
-        return idAddress;
-    }
-
-    public void setIdAddress(Long idAddress) {
-        this.idAddress = idAddress;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
         this.country = country;
     }
 

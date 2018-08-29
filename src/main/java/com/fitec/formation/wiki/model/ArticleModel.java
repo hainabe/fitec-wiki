@@ -3,14 +3,20 @@ package com.fitec.formation.wiki.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fitec.formation.wiki.util.JsonUtil;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Date;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@Getter
+@Setter
+@NoArgsConstructor
 public class ArticleModel {
 
-    private Long idArticle;
+    private Long idArticleModel;
     private String title;
     private String content;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = JsonUtil.DATE_PATTERN)
@@ -18,9 +24,7 @@ public class ArticleModel {
 
     private UserModel userModel;
     private List<CommentModel> commentsModel;
-
-    public ArticleModel() {
-    }
+    private StatusModel statusModel;
 
     public ArticleModel(String title, String content, Date creationDate) {
         this.title = title;
@@ -28,63 +32,30 @@ public class ArticleModel {
         this.creationDate = creationDate;
     }
 
-    public ArticleModel(Long idArticle, String title, String content, Date creationDate) {
-        this.idArticle = idArticle;
+    public ArticleModel(Long idArticleModel, String title, String content, Date creationDate) {
+        this.idArticleModel = idArticleModel;
         this.title = title;
         this.content = content;
         this.creationDate = creationDate;
     }
 
-    public Long getIdArticle() {
-        return idArticle;
-    }
-
-    public void setIdArticle(Long idArticle) {
-        this.idArticle = idArticle;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
+    public ArticleModel(String title, String content, Date creationDate, StatusModel statusModel) {
         this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
         this.content = content;
-    }
-
-    public Date getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
+        this.statusModel = statusModel;
     }
 
-    public UserModel getUserModel() {
-        return userModel;
-    }
-
-    public void setUserModel(UserModel userModel) {
-        this.userModel = userModel;
-    }
-
-    public List<CommentModel> getCommentsModel() {
-        return commentsModel;
-    }
-
-    public void setCommentsModel(List<CommentModel> commentsModel) {
-        this.commentsModel = commentsModel;
+    public ArticleModel(Long idArticleModel, String title, String content, Date creationDate, StatusModel statusModel) {
+        this.idArticleModel = idArticleModel;
+        this.title = title;
+        this.content = content;
+        this.creationDate = creationDate;
+        this.statusModel = statusModel;
     }
 
     @Override
     public String toString() {
-        return title + "[" + idArticle + "] " + content + " (" + creationDate + ")";
+        return title + "[" + idArticleModel + "] " + content + " (" + creationDate + ")";
     }
 }

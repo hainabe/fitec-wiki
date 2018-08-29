@@ -1,5 +1,9 @@
 package com.fitec.formation.wiki.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,6 +23,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "T_COMMENT")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Comment implements Serializable {
 
     private static final Long serialVersionUID = 1L;
@@ -44,9 +51,8 @@ public class Comment implements Serializable {
     private Comment parentComment;
     @OneToMany(mappedBy = "parentComment", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Comment> childComments;
-
-    public Comment() {
-    }
+    @ManyToOne
+    private Status status;
 
     public Comment(String title, String content, Date creationDate) {
         this.title = title;
@@ -54,72 +60,11 @@ public class Comment implements Serializable {
         this.creationDate = creationDate;
     }
 
-    public static Long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    public Long getIdComment() {
-        return idComment;
-    }
-
-    public void setIdComment(Long idComment) {
-        this.idComment = idComment;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
+    public Comment(String title, String content, Date creationDate, Status status) {
         this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
         this.content = content;
-    }
-
-    public Date getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
-    }
-
-    public Article getArticle() {
-        return article;
-    }
-
-    public void setArticle(Article article) {
-        this.article = article;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Comment getParentComment() {
-        return parentComment;
-    }
-
-    public void setParentComment(Comment parentComment) {
-        this.parentComment = parentComment;
-    }
-
-    public List<Comment> getChildComments() {
-        return childComments;
-    }
-
-    public void setChildComments(List<Comment> childComments) {
-        this.childComments = childComments;
+        this.status = status;
     }
 
     @Override

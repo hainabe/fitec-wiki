@@ -13,27 +13,27 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "T_PROFILE")
+@Table(name = "T_STATUS")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Profile implements Serializable {
+public class Status implements Serializable {
 
     private static final Long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_PROFILE")
-    private Long idProfile;
+    @Column(name = "ID_STATUS")
+    private Long idStatus;
     @Column(name = "VALUE")
-    private String profile;
+    private String status;
 
-    public Profile(String profile) {
-        this.profile = profile;
+    public Status(String status) {
+        this.status = status;
     }
 
     @Override
     public String toString() {
-        return profile + " [" + idProfile + "]";
+        return status + " [" + idStatus + "]";
     }
 }

@@ -1,5 +1,9 @@
 package com.fitec.formation.wiki.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +22,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "T_ARTICLE")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Article implements Serializable {
 
     private static final Long serialVersionUID = 1L;
@@ -38,9 +45,8 @@ public class Article implements Serializable {
     private User user;
     @OneToMany(mappedBy = "article", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Comment> comments;
-
-    public Article() {
-    }
+    @ManyToOne
+    private Status status;
 
     public Article(String title, String content, Date creationDate) {
         this.title = title;
@@ -48,56 +54,11 @@ public class Article implements Serializable {
         this.creationDate = creationDate;
     }
 
-    public static Long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    public Long getIdArticle() {
-        return idArticle;
-    }
-
-    public void setIdArticle(Long idArticle) {
-        this.idArticle = idArticle;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
+    public Article(String title, String content, Date creationDate, Status status) {
         this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
         this.content = content;
-    }
-
-    public Date getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
+        this.status = status;
     }
 
     @Override

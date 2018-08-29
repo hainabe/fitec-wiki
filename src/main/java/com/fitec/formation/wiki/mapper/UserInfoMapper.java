@@ -9,7 +9,6 @@ public class UserInfoMapper {
         UserInfo ui = new UserInfo();
         ui.setFirstname(uim.getFirstname());
         ui.setLastname(uim.getLastname());
-        ui.setEmail(uim.getEmail());
         ui.setPhone(uim.getPhone());
         ui.setAddress(AddressMapper.mapToAddress(uim.getAddressModel()));
         ui.setBirthday(uim.getBirthday());
@@ -20,7 +19,6 @@ public class UserInfoMapper {
         UserInfoModel uim = new UserInfoModel();
         uim.setFirstname(ui.getFirstname());
         uim.setLastname(ui.getLastname());
-        uim.setEmail(ui.getEmail());
         uim.setPhone(ui.getPhone());
         uim.setAddressModel(AddressMapper.mapToAddressModel(ui.getAddress()));
         uim.setBirthday(ui.getBirthday());

@@ -7,6 +7,7 @@ public class UserLoggerMapper {
 
     public static UserLogger mapToUserLogger(UserLoggerModel ulm) {
         UserLogger ul = new UserLogger();
+        ul.setEmail(ulm.getEmail());
         ul.setUsername(ulm.getUsername());
         ul.setPassword(ulm.getPassword());
         ul.setCreationDate(ulm.getCreationDate());
@@ -16,6 +17,7 @@ public class UserLoggerMapper {
 
     public static UserLoggerModel mapToUserLoggerModel(UserLogger ul) {
         UserLoggerModel ulm = new UserLoggerModel();
+        ulm.setEmail(ul.getEmail());
         ulm.setUsername(ul.getUsername());
         ulm.setPassword(ul.getPassword());
         ulm.setCreationDate(ul.getCreationDate());

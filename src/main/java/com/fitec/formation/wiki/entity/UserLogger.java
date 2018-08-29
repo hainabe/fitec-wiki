@@ -1,5 +1,9 @@
 package com.fitec.formation.wiki.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
@@ -14,6 +18,9 @@ import java.util.Date;
 
 @Embeddable
 @Table(name = "T_USER_LOGGER")
+@Getter
+@Setter
+@NoArgsConstructor
 public class UserLogger implements Serializable {
 
     private static final Long serialVersionUID = 1L;
@@ -22,6 +29,8 @@ public class UserLogger implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_USER_LOGGER")
     private Long idUserLogger;
+    @Column(name = "EMAIL")
+    private String email;
     @Column(name = "USERNAME")
     private String username;
     @Column(name = "PASSWORD")
@@ -33,62 +42,16 @@ public class UserLogger implements Serializable {
     @ManyToOne
     private Profile profile;
 
-    public UserLogger() {
-    }
-
     public UserLogger(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
-    public UserLogger(String username, String password, Date creationDate, Profile profile) {
+    public UserLogger(String email, String username, String password, Date creationDate, Profile profile) {
+        this.email = email;
         this.username = username;
         this.password = password;
         this.creationDate = creationDate;
-        this.profile = profile;
-    }
-
-    public static Long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    public Long getIdUserLogger() {
-        return idUserLogger;
-    }
-
-    public void setIdUserLogger(Long idUserLogger) {
-        this.idUserLogger = idUserLogger;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Date getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public Profile getProfile() {
-        return profile;
-    }
-
-    public void setProfile(Profile profile) {
         this.profile = profile;
     }
 

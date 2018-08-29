@@ -5,14 +5,14 @@ import com.fitec.formation.wiki.model.ProfileModel;
 
 public class ProfileMapper {
 
-    public static Profile mapToProfile(ProfileModel type) {
+    public static Profile mapToProfile(ProfileModel value) {
         Profile p = new Profile();
-        p.setType(type.toString());
+        p.setProfile(value.toString());
         return p;
     }
 
     public static ProfileModel mapToProfileModel(Profile p) {
-        String type = p.getType();
-        return Enum.valueOf(ProfileModel.class, type);
+        String value = p.getProfile();
+        return Enum.valueOf(ProfileModel.class, value);
     }
 }

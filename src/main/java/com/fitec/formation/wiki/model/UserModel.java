@@ -1,10 +1,16 @@
 package com.fitec.formation.wiki.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@Getter
+@Setter
+@NoArgsConstructor
 public class UserModel {
 
     private Long idUserModel;
@@ -13,11 +19,14 @@ public class UserModel {
 
     private List<ArticleModel> articlesModel;
     private List<CommentModel> commentsModel;
-
-    public UserModel() {
-    }
+    private StatusModel statusModel;
 
     public UserModel(UserLoggerModel userLoggerModel) {
+        this.userLoggerModel = userLoggerModel;
+    }
+
+    public UserModel(Long idUserModel, UserLoggerModel userLoggerModel) {
+        this.idUserModel = idUserModel;
         this.userLoggerModel = userLoggerModel;
     }
 
@@ -32,44 +41,17 @@ public class UserModel {
         this.userInfoModel = userInfoModel;
     }
 
-    public Long getIdUserModel() {
-        return idUserModel;
-    }
-
-    public void setIdUserModel(Long idUserModel) {
-        this.idUserModel = idUserModel;
-    }
-
-    public UserLoggerModel getUserLoggerModel() {
-        return userLoggerModel;
-    }
-
-    public void setUserLoggerModel(UserLoggerModel userLoggerModel) {
+    public UserModel(UserLoggerModel userLoggerModel, UserInfoModel userInfoModel, StatusModel statusModel) {
         this.userLoggerModel = userLoggerModel;
-    }
-
-    public UserInfoModel getUserInfoModel() {
-        return userInfoModel;
-    }
-
-    public void setUserInfoModel(UserInfoModel userInfoModel) {
         this.userInfoModel = userInfoModel;
+        this.statusModel = statusModel;
     }
 
-    public List<ArticleModel> getArticlesModel() {
-        return articlesModel;
-    }
-
-    public void setArticlesModel(List<ArticleModel> articlesModel) {
-        this.articlesModel = articlesModel;
-    }
-
-    public List<CommentModel> getCommentsModel() {
-        return commentsModel;
-    }
-
-    public void setCommentsModel(List<CommentModel> commentsModel) {
-        this.commentsModel = commentsModel;
+    public UserModel(Long idUserModel, UserLoggerModel userLoggerModel, UserInfoModel userInfoModel, StatusModel statusModel) {
+        this.idUserModel = idUserModel;
+        this.userLoggerModel = userLoggerModel;
+        this.userInfoModel = userInfoModel;
+        this.statusModel = statusModel;
     }
 
     @Override

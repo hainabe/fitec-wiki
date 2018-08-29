@@ -6,5 +6,5 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public enum ProfileModel {
     ADMIN,
     MOD,
-    USER;
+    USER
 }

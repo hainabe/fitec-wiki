@@ -16,6 +16,7 @@ public class CommentMapper {
         for (CommentModel chm : cm.getChildCommentsModel()) {
             c.getChildComments().add(CommentMapper.mapToComment(chm));
         }
+        c.setStatus((StatusMapper.mapToStatus(cm.getStatusModel())));
         return c;
     }
 
@@ -30,6 +31,7 @@ public class CommentMapper {
         for (Comment ch : c.getChildComments()) {
             cm.getChildCommentsModel().add(CommentMapper.mapToCommentModel(ch));
         }
+        cm.setStatusModel(StatusMapper.mapToStatusModel(c.getStatus()));
         return cm;
     }
 }
