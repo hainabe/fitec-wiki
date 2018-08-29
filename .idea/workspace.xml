@@ -2,32 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8149366d-1b4c-41d7-a6f8-525b8b531c93" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/entity/Status.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/mapper/StatusMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/model/StatusModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/controller/ArticleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/dao/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/entity/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/entity/Address.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/entity/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/entity/Article.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/entity/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/entity/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/entity/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/entity/Profile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/entity/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/entity/UserInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/entity/UserLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/entity/UserLogger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/mapper/ArticleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/mapper/ArticleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/mapper/CommentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/mapper/CommentMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/mapper/ProfileMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/mapper/ProfileMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/mapper/UserInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/mapper/UserInfoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/mapper/UserLoggerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/mapper/UserLoggerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/model/AddressModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/model/AddressModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/model/ArticleModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/model/ArticleModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/model/CommentModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/model/CommentModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/model/ProfileModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/model/ProfileModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/model/UserInfoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/model/UserInfoModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/model/UserLoggerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/model/UserLoggerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/model/UserModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/model/UserModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/service/ArticleService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -81,7 +58,7 @@
         <counts>
           <entry key="gitignore" value="1" />
           <entry key="iml" value="1" />
-          <entry key="java" value="113" />
+          <entry key="java" value="117" />
           <entry key="properties" value="1" />
           <entry key="xml" value="2" />
         </counts>
@@ -89,7 +66,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="113" />
+          <entry key="JAVA" value="117" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="Properties" value="1" />
           <entry key="XML" value="2" />
@@ -97,13 +74,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1453" />
+          <entry key="java" value="1504" />
           <entry key="xml" value="87" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1453" />
+          <entry key="JAVA" value="1504" />
           <entry key="XML" value="87" />
         </counts>
       </usages-collector>
@@ -124,33 +101,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/model/UserModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="24" column="47" lean-forward="true" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
-              <folding>
-                <element signature="e#601#602#0" expanded="true" />
-                <element signature="e#655#656#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/entity/Article.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="693">
-              <caret line="60" column="29" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/mapper/UserMapper.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/controller/ArticleController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="35" column="69" selection-start-line="35" selection-start-column="69" selection-end-line="35" selection-end-column="69" />
+            <state relative-caret-position="68">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/service/ArticleService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/service/ArticleServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -211,6 +184,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/model/CommentModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/mapper/CommentMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/mapper/UserMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/service/ArticleService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/controller/ArticleController.java" />
       </list>
     </option>
   </component>
@@ -235,7 +210,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
-    <option name="width" value="1155" />
+    <option name="width" value="1013" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectView">
@@ -324,6 +299,33 @@
               <item name="wiki" type="b2602c69:ProjectViewProjectNode" />
               <item name="wiki" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="wiki" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="wiki" type="b2602c69:ProjectViewProjectNode" />
+              <item name="wiki" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="wiki" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="wiki" type="b2602c69:ProjectViewProjectNode" />
+              <item name="wiki" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="wiki" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="wiki" type="b2602c69:ProjectViewProjectNode" />
+              <item name="wiki" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -348,7 +350,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535555640619" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535564696297" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../__samples/_tp/gestion-client" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -391,12 +393,12 @@
       <workItem from="1535379252787" duration="695000" />
       <workItem from="1535443553644" duration="1239000" />
       <workItem from="1535531282824" duration="3303000" />
-      <workItem from="1535538848861" duration="11918000" />
+      <workItem from="1535538848861" duration="15525000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34540000" />
+    <option name="totallyTimeSpent" value="38147000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -411,7 +413,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21695095" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.118336886" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -428,7 +430,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.329718" />
       <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4989339" weight="0.3264642" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4989339" visible="true" weight="0.3264642" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5010661" side_tool="true" weight="0.3264642" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
@@ -453,13 +455,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/repository/CommentRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/repository/ProfileRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -489,13 +484,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/service/AddressService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/service/ArticleService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
@@ -541,13 +529,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/service/ArticleServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
@@ -666,13 +647,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/mapper/ArticleMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="31" column="69" selection-start-line="31" selection-start-column="69" selection-end-line="31" selection-end-column="69" />
         </state>
       </provider>
     </entry>
@@ -803,21 +777,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/mapper/ArticleMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="31" column="69" selection-start-line="31" selection-start-column="69" selection-end-line="31" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/mapper/UserMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="35" column="69" selection-start-line="35" selection-start-column="69" selection-end-line="35" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/entity/Article.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="693">
           <caret line="60" column="29" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/entity/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="28" column="30" lean-forward="true" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
-          <folding>
-            <element signature="e#978#979#0" expanded="true" />
-            <element signature="e#1022#1023#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -832,10 +809,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/mapper/UserMapper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/entity/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="35" column="69" selection-start-line="35" selection-start-column="69" selection-end-line="35" selection-end-column="69" />
+        <state relative-caret-position="301">
+          <caret line="28" column="30" lean-forward="true" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+          <folding>
+            <element signature="e#978#979#0" expanded="true" />
+            <element signature="e#1022#1023#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/service/ArticleServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/service/ArticleService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fitec/formation/wiki/controller/ArticleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
