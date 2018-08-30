@@ -1,6 +1,7 @@
 package com.fitec.formation.wiki.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,6 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class AddressModel {
 
     private Long idAddressModel;
@@ -18,14 +20,6 @@ public class AddressModel {
     private String country;
 
     public AddressModel(String street, String city, String zipcode, String country) {
-        this.street = street;
-        this.city = city;
-        this.zipcode = zipcode;
-        this.country = country;
-    }
-
-    public AddressModel(Long idAddressModel, String street, String city, String zipcode, String country) {
-        this.idAddressModel = idAddressModel;
         this.street = street;
         this.city = city;
         this.zipcode = zipcode;

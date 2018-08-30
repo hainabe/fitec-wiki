@@ -3,6 +3,7 @@ package com.fitec.formation.wiki.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fitec.formation.wiki.util.JsonUtil;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class UserLoggerModel {
 
     private Long idUserLoggerModel;
@@ -36,15 +38,6 @@ public class UserLoggerModel {
     }
 
     public UserLoggerModel(String email, String username, String password, Date creationDate, ProfileModel profileModel) {
-        this.email = email;
-        this.username = username;
-        this.password = password;
-        this.creationDate = creationDate;
-        this.profileModel = profileModel;
-    }
-
-    public UserLoggerModel(Long idUserLoggerModel, String email, String username, String password, Date creationDate, ProfileModel profileModel) {
-        this.idUserLoggerModel = idUserLoggerModel;
         this.email = email;
         this.username = username;
         this.password = password;

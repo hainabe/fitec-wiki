@@ -7,10 +7,11 @@ import com.fitec.formation.wiki.model.ProfileModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ProfileTest {
+
+public class ProfileTest {
 
     public static List<Profile> initProfileSuite() {
-        final List<Profile> profiles = new ArrayList<Profile>();
+        final List<Profile> profiles = new ArrayList<>();
         profiles.add(ProfileMapper.mapToProfile(ProfileModel.ADMIN));
         profiles.add(ProfileMapper.mapToProfile(ProfileModel.MOD));
         profiles.add(ProfileMapper.mapToProfile(ProfileModel.USER));
