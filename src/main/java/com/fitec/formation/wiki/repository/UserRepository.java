@@ -11,10 +11,10 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    User findByUserLogin_UserName(String username);
-
-    List<User> findByStatus(Status status);
-
-    List<User> findByUserLogin_Profile(Profile profile);
+//    User findByUserLogin_UserName(String username);
+//
+//    List<User> findByStatus(Status status);
+//
+//    List<User> findByUserLogin_Profile(Profile profile);
 
 }

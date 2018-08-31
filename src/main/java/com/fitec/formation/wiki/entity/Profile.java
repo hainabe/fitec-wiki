@@ -1,15 +1,11 @@
 package com.fitec.formation.wiki.entity;
 
+import com.fitec.formation.wiki.model.ProfileModel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -25,10 +21,11 @@ public class Profile implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_PROFILE")
     private Long idProfile;
+    @Enumerated(EnumType.STRING)
     @Column(name = "VALUE")
-    private String profile;
+    private ProfileModel profile;
 
-    public Profile(String profile) {
+    public Profile(ProfileModel profile) {
         this.profile = profile;
     }
 
@@ -37,3 +34,9 @@ public class Profile implements Serializable {
         return profile + " [" + idProfile + "]";
     }
 }
+
+//public enum ProfileEnum {
+//    ADMIN,
+//    MOD,
+//    USER
+//}

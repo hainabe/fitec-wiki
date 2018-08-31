@@ -17,10 +17,10 @@ public class UserLogger implements Serializable {
 
     private static final Long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_USER_LOGGER")
-    private Long idUserLogger;
+    //    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "ID_USER_LOGGER")
+//    private Long idUserLogger;
     @Column(name = "EMAIL")
     private String email;
     @Column(name = "USERNAME")
@@ -31,7 +31,7 @@ public class UserLogger implements Serializable {
     @Column(name = "CREATION_DATE")
     private Date creationDate;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Profile profile;
 
     public UserLogger(String username, String password) {
@@ -49,6 +49,6 @@ public class UserLogger implements Serializable {
 
     @Override
     public String toString() {
-        return username + " " + password + " [" + idUserLogger + "] " + profile + " (" + creationDate + ")";
+        return username + " " + password + " [" + /*idUserLogger + */"] " + profile + " (" + creationDate + ")";
     }
 }

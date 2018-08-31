@@ -17,34 +17,35 @@ public class UserInfo implements Serializable {
 
     private static final Long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_USER_INFORMATION")
-    private Long idUserInfo;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "ID_USER_INFORMATION")
+//    private Long idUserInfo;
     @Column(name = "FIRSTNAME")
     private String firstname;
     @Column(name = "LASTNAME")
     private String lastname;
     @Column(name = "PHONE")
     private String phone;
-    @Embedded
-    @Column(name = "ADDRESS")
-    private Address address;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "BIRTHDAY")
     private Date birthday;
 
-    public UserInfo(String firstname, String lastname, String phone, Address address, Date birthday) {
+    @Embedded
+    @Column(name = "ADDRESS")
+    private Address address;
+
+    public UserInfo(String firstname, String lastname, String phone, Date birthday, Address address) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.phone = phone;
-        this.address = address;
         this.birthday = birthday;
+        this.address = address;
     }
 
     @Override
     public String toString() {
-        return firstname + " " + lastname + " [" + idUserInfo + "]\n" +
+        return firstname + " " + lastname + " [" + /*idUserInfo + */"]\n" +
                 phone + " (" + birthday + ")\n" +
                 address;
     }

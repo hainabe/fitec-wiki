@@ -28,12 +28,13 @@ public class User implements Serializable {
     @Column(name = "USER_INFORMATION")
     private UserInfo userInfo;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Status status;
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Article> articles;
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Comment> comments;
-    @ManyToOne
-    private Status status;
+
 
     public User(UserLogger userLogger) {
         this.userLogger = userLogger;

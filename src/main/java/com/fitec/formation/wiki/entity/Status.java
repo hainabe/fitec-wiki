@@ -1,15 +1,11 @@
 package com.fitec.formation.wiki.entity;
 
+import com.fitec.formation.wiki.model.StatusModel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -25,10 +21,11 @@ public class Status implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_STATUS")
     private Long idStatus;
+    @Enumerated(EnumType.STRING)
     @Column(name = "VALUE")
-    private String status;
+    private StatusModel status;
 
-    public Status(String status) {
+    public Status(StatusModel status) {
         this.status = status;
     }
 
@@ -37,3 +34,18 @@ public class Status implements Serializable {
         return status + " [" + idStatus + "]";
     }
 }
+
+//enum StatusEnum {
+//    STATUS_ARTICLE_APPROVED,
+//    STATUS_ARTICLE_UNAPPROVED,
+//    STATUS_ARTICLE_SUBMITTED,
+//    STATUS_ARTICLE_DISABLED,
+//
+//    STATUS_USER_CONNECTED,
+//    STATUS_USER_DISCONNECTED,
+//    STATUS_USER_BANNED,
+//    STATUS_USER_DISABLED,
+//
+//    STATUS_COMMENT_ENABLED,
+//    STATUS_COMMENT_DISABLED
+//}

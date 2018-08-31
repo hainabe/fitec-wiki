@@ -4,19 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -43,6 +31,8 @@ public class Comment implements Serializable {
     private Date creationDate;
 
     @ManyToOne
+    private Status status;
+    @ManyToOne
     private Article article;
     @ManyToOne
     private User user;
@@ -51,8 +41,7 @@ public class Comment implements Serializable {
     private Comment parentComment;
     @OneToMany(mappedBy = "parentComment", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Comment> childComments;
-    @ManyToOne
-    private Status status;
+
 
     public Comment(String title, String content, Date creationDate) {
         this.title = title;

@@ -17,10 +17,10 @@ public class Address implements Serializable {
 
     private static final Long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_ADDRESS")
-    private Long idAddress;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "ID_ADDRESS")
+//    private Long idAddress;
     @Column(name = "STREET")
     private String street;
     @Column(name = "CITY")
@@ -39,7 +39,7 @@ public class Address implements Serializable {
 
     @Override
     public String toString() {
-        return "\t[" + idAddress + "]\n\t" +
+        return "\t[" + /*idAddress + */"]\n\t" +
                 street + "\n\t" +
                 zipcode + " - " + city + "\n\t" +
                 country;

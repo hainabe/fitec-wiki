@@ -10,15 +10,15 @@ public interface CommentService {
 
     boolean addComment(Comment c);
 
-    Comment getComment(Long id);
-
-    boolean updateComment(Comment c);
-
-    boolean deleteComment(Long id);
-
-    List<Comment> getComments();
-
-    List<Comment> getCommentsByParent(Comment parentComment);
-
-    List<Comment> getCommentsByUser(String username);
+//    Comment getComment(Long id);
+//
+//    boolean updateComment(Comment c);
+//
+//    boolean deleteComment(Long id);
+//
+//    List<Comment> getComments();
+//
+//    List<Comment> getCommentsByParent(Comment parentComment);
+//
+//    List<Comment> getCommentsByUser(String username);
 }

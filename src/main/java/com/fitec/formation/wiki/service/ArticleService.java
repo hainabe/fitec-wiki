@@ -11,18 +11,18 @@ public interface ArticleService {
 
     boolean addArticle(Article a);
 
-    Article getArticle(Long id);
-
-    boolean updateArticle(Article a);
-
-    boolean deleteArticle(Long id);
-
-    List<Article> getArticles();
-
-    List<Article> getArticlesByStatus(Status status);
-
-    List<Article> getArticlesByUser(String username);
-
-    List<Article> getArticlesByYear(String strYear);
+//    Article getArticle(Long id);
+//
+//    boolean updateArticle(Article a);
+//
+//    boolean deleteArticle(Long id);
+//
+//    List<Article> getArticles();
+//
+//    List<Article> getArticlesByStatus(Status status);
+//
+//    List<Article> getArticlesByUser(String username);
+//
+//    List<Article> getArticlesByYear(String strYear);
 
 }

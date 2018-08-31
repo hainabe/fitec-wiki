@@ -7,13 +7,13 @@ public class StatusMapper {
 
     public static Status mapToStatus(StatusModel value) {
         Status s = new Status();
-        s.setStatus(value.toString());
+        s.setStatus(value);
         return s;
     }
 
     public static StatusModel mapToStatusModel(Status s) {
-        String value = s.getStatus();
-        return Enum.valueOf(StatusModel.class, value);
+        StatusModel value = s.getStatus();
+        return value;
     }
 
 }

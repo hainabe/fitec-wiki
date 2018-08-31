@@ -7,12 +7,12 @@ public class ProfileMapper {
 
     public static Profile mapToProfile(ProfileModel value) {
         Profile p = new Profile();
-        p.setProfile(value.toString());
+        p.setProfile(value);
         return p;
     }
 
     public static ProfileModel mapToProfileModel(Profile p) {
-        String value = p.getProfile();
-        return Enum.valueOf(ProfileModel.class, value);
+        ProfileModel value = p.getProfile();
+        return value;
     }
 }

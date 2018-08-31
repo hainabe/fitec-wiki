@@ -10,10 +10,10 @@ import java.util.List;
 @Repository
 public interface ArticleRepository extends JpaRepository<Article, Long> {
 
-    List<Article> findByUser_UserLogin_UserName(String username);
-
-    List<Article> findByStatus(Status status);
-
-    List<Article> findByCreationDate_Year(String year);
+//    List<Article> findByUser_UserLogin_UserName(String username);
+//
+//    List<Article> findByStatus(Status status);
+//
+//    List<Article> findByCreationDate_Year(String year);
 
 }
