@@ -1,42 +1,82 @@
 package com.fitec.formation.wiki.service;
 
 import com.fitec.formation.wiki.entity.Comment;
+import com.fitec.formation.wiki.repository.CommentRepository;
+import com.fitec.formation.wiki.util.MessageUtil;
+import com.fitec.formation.wiki.util.PropertyUtil;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Objects;
 
 public class CommentServiceImpl implements CommentService {
+
+    @Autowired
+    CommentRepository commentRepository;
+    @Autowired
+    PropertyUtil propertyUtil;
+
     @Override
     public boolean addComment(Comment c) {
-        return false;
+        boolean result = false;
+        if (Objects.nonNull(c)) {
+            result = Objects.nonNull(commentRepository.save(c));
+            System.out.println(MessageUtil.COMMENT_SUCCESS_ADDED);
+        } else {
+            System.out.println(MessageUtil.COMMENT_ERROR_NULL);
+        }
+        return result;
     }
 
     @Override
     public Comment getComment(Long id) {
-        return null;
+        Comment comment = commentRepository.getOne(id);
+        return comment;
     }
 
     @Override
-    public boolean updateComment(Comment c) {
-        return false;
+    public boolean updateComment(Comment oldC) {
+        boolean result = false;
+        Comment targetComment = commentRepository.getOne(oldC.getIdComment());
+        if (Objects.nonNull(oldC) && commentRepository.existsById(oldC.getIdComment())) {
+            BeanUtils.copyProperties(oldC, targetComment, propertyUtil.getNullPropertyNames(oldC));
+            result = Objects.nonNull(commentRepository.save(targetComment));
+            System.out.println(MessageUtil.COMMENT_SUCCESS_UPDATED);
+        } else {
+            System.out.println(MessageUtil.COMMENT_ERROR_NULL_DONT_EXIST);
+        }
+        return result;
     }
 
     @Override
     public boolean deleteComment(Long id) {
-        return false;
+        boolean result = false;
+        if (commentRepository.existsById(id)) {
+            commentRepository.delete(getComment(id));
+            result = true;
+            System.out.println(MessageUtil.COMMENT_SUCCESS_DELETED);
+        } else {
+            System.out.println(MessageUtil.COMMENT_ERROR_DONT_EXIST);
+        }
+        return result;
     }
 
     @Override
     public List<Comment> getComments() {
-        return null;
+        List<Comment> comments = commentRepository.findAll();
+        return comments;
     }
 
     @Override
     public List<Comment> getCommentsByParent(Comment parentComment) {
-        return null;
+        List<Comment> comments = commentRepository.findByParentComment(parentComment);
+        return comments;
     }
 
     @Override
     public List<Comment> getCommentsByUser(String username) {
-        return null;
+        List<Comment> comments = commentRepository.findByUser_UserLogin_UserName(username);
+        return comments;
     }
 }

@@ -4,7 +4,7 @@ import com.fitec.formation.wiki.entity.*;
 import com.fitec.formation.wiki.mapper.*;
 import com.fitec.formation.wiki.model.*;
 import com.fitec.formation.wiki.service.UserService;
-import com.fitec.formation.wiki.util.JsonUtil;
+import com.fitec.formation.wiki.util.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +27,7 @@ public class UserController {
             UserModel um = UserMapper.mapToUserModel(u);
             return new ResponseEntity<>(um, HttpStatus.OK);
         }
-        return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(path = "/user/{username}", method = RequestMethod.GET) // @GetMapping
@@ -37,16 +37,16 @@ public class UserController {
             UserModel um = UserMapper.mapToUserModel(u);
             return new ResponseEntity<>(um, HttpStatus.OK);
         }
-        return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(path = "/user", method = RequestMethod.POST) // @PostMapping
     public ResponseEntity<Object> addUser(@RequestBody UserModel um) {
         User u = UserMapper.mapToUser(um);
         if (userService.addUser(u)) {
-            return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_SUCCESS_ADD), HttpStatus.OK);
+            return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_SUCCESS_ADD), HttpStatus.OK);
         }
-        return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_ERROR_DB), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_DB), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @RequestMapping(path = "/user/{id}", method = RequestMethod.PUT) // @PutMapping
@@ -55,17 +55,17 @@ public class UserController {
         User u = UserMapper.mapToUser(um);
         u.setIdUser(id);
         if (userService.updateUser(u)) {
-            return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_SUCCESS_UPDATE), HttpStatus.OK);
+            return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_SUCCESS_UPDATE), HttpStatus.OK);
         }
-        return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(path = "/user/{id}", method = RequestMethod.DELETE) // @DeleteMapping
     public ResponseEntity<Object> deleteUser(@PathVariable("id") Long id) {
         if (userService.deleteUser(id)) {
-            return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_SUCCESS_DELETE), HttpStatus.OK);
+            return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_SUCCESS_DELETE), HttpStatus.OK);
         }
-        return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(path = "/users", method = RequestMethod.GET) // @GetMapping
@@ -107,10 +107,10 @@ public class UserController {
         Article a = ArticleMapper.mapToArticle(am);
         a.setIdArticle(id);
         Status s = StatusMapper.mapToStatus(sm);
-        if (userService.setStatusOfArticle(a, s)) {
-            return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_SUCCESS_UPDATE), HttpStatus.OK);
+        if (userService.setStatus(a, s)) {
+            return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_SUCCESS_UPDATE), HttpStatus.OK);
         }
-        return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(path = "/mod/comment/{id}", method = RequestMethod.PUT) // @PutMapping
@@ -120,10 +120,10 @@ public class UserController {
         Comment c = CommentMapper.mapToComment(cm);
         c.setIdComment(id);
         Status s = StatusMapper.mapToStatus(sm);
-        if (userService.setStatusOfComment(c, s)) {
-            return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_SUCCESS_UPDATE), HttpStatus.OK);
+        if (userService.setStatus(c, s)) {
+            return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_SUCCESS_UPDATE), HttpStatus.OK);
         }
-        return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(path = "/admin/user/{id}", method = RequestMethod.PUT) // @PutMapping
@@ -133,9 +133,9 @@ public class UserController {
         User u = UserMapper.mapToUser(um);
         u.setIdUser(id);
         Status s = StatusMapper.mapToStatus(sm);
-        if (userService.setStatusOfUser(u, s)) {
-            return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_SUCCESS_UPDATE), HttpStatus.OK);
+        if (userService.setStatus(u, s)) {
+            return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_SUCCESS_UPDATE), HttpStatus.OK);
         }
-        return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
     }
 }

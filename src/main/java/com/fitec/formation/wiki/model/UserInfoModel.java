@@ -2,7 +2,7 @@ package com.fitec.formation.wiki.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fitec.formation.wiki.util.JsonUtil;
+import com.fitec.formation.wiki.util.MessageUtil;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +22,7 @@ public class UserInfoModel {
     private String lastname;
     private String phone;
     private AddressModel addressModel;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = JsonUtil.DATE_PATTERN)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = MessageUtil.DATE_PATTERN)
     private Date birthday;
 
     public UserInfoModel(String firstname, String lastname, String phone, AddressModel addressModel, Date birthday) {

@@ -5,7 +5,7 @@ import com.fitec.formation.wiki.mapper.CommentMapper;
 import com.fitec.formation.wiki.model.CommentModel;
 import com.fitec.formation.wiki.model.MessageModel;
 import com.fitec.formation.wiki.service.CommentService;
-import com.fitec.formation.wiki.util.JsonUtil;
+import com.fitec.formation.wiki.util.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,16 +28,16 @@ public class CommentController {
             CommentModel cm = CommentMapper.mapToCommentModel(c);
             return new ResponseEntity<>(cm, HttpStatus.OK);
         }
-        return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(path = "/comment", method = RequestMethod.POST) // @PostMapping
     public ResponseEntity<Object> addComment(@RequestBody CommentModel cm) {
         Comment c = CommentMapper.mapToComment(cm);
         if (commentService.addComment(c)) {
-            return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_SUCCESS_ADD), HttpStatus.OK);
+            return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_SUCCESS_ADD), HttpStatus.OK);
         }
-        return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_ERROR_DB), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_DB), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @RequestMapping(path = "/comment/{id}", method = RequestMethod.PUT) // @PutMapping
@@ -46,17 +46,17 @@ public class CommentController {
         Comment c = CommentMapper.mapToComment(cm);
         c.setIdComment(id);
         if (commentService.updateComment(c)) {
-            return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_SUCCESS_UPDATE), HttpStatus.OK);
+            return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_SUCCESS_UPDATE), HttpStatus.OK);
         }
-        return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(path = "/comment/{id}", method = RequestMethod.DELETE) // @DeleteMapping
     public ResponseEntity<Object> deleteComment(@PathVariable("id") Long id) {
         if (commentService.deleteComment(id)) {
-            return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_SUCCESS_DELETE), HttpStatus.OK);
+            return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_SUCCESS_DELETE), HttpStatus.OK);
         }
-        return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(path = "/comments", method = RequestMethod.GET) // @GetMapping

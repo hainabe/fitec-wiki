@@ -24,9 +24,8 @@ public interface UserService {
 
     List<User> getUsersByProfile(Profile profile);
 
-    boolean setStatusOfArticle(Article article, Status status);
-
-    boolean setStatusOfComment(Comment comment, Status status);
-
-    boolean setStatusOfUser(User user, Status status);
+    // boolean setStatusOfArticle(Article article, Status status);
+    // boolean setStatusOfComment(Comment comment, Status status);
+    // boolean setStatusOfUser(User user, Status status);
+    boolean setStatus(Object object, Status status);
 }

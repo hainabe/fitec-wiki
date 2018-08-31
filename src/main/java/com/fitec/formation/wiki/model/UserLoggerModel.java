@@ -2,7 +2,7 @@ package com.fitec.formation.wiki.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fitec.formation.wiki.util.JsonUtil;
+import com.fitec.formation.wiki.util.MessageUtil;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +21,7 @@ public class UserLoggerModel {
     private String email;
     private String username;
     private String password;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = JsonUtil.DATE_PATTERN)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = MessageUtil.DATE_PATTERN)
     private Date creationDate;
 
     private ProfileModel profileModel;

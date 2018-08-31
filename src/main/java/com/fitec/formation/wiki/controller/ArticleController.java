@@ -8,7 +8,7 @@ import com.fitec.formation.wiki.model.ArticleModel;
 import com.fitec.formation.wiki.model.MessageModel;
 import com.fitec.formation.wiki.model.StatusModel;
 import com.fitec.formation.wiki.service.ArticleService;
-import com.fitec.formation.wiki.util.JsonUtil;
+import com.fitec.formation.wiki.util.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,16 +31,16 @@ public class ArticleController {
             ArticleModel am = ArticleMapper.mapToArticleModel(a);
             return new ResponseEntity<>(am, HttpStatus.OK);
         }
-        return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(path = "/article", method = RequestMethod.POST) // @PostMapping
     public ResponseEntity<Object> addArticle(@RequestBody ArticleModel am) {
         Article a = ArticleMapper.mapToArticle(am);
         if (articleService.addArticle(a)) {
-            return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_SUCCESS_ADD), HttpStatus.OK);
+            return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_SUCCESS_ADD), HttpStatus.OK);
         }
-        return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_ERROR_DB), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_DB), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @RequestMapping(path = "/article/{id}", method = RequestMethod.PUT) // @PutMapping
@@ -49,17 +49,17 @@ public class ArticleController {
         Article a = ArticleMapper.mapToArticle(am);
         a.setIdArticle(id);
         if (articleService.updateArticle(a)) {
-            return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_SUCCESS_UPDATE), HttpStatus.OK);
+            return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_SUCCESS_UPDATE), HttpStatus.OK);
         }
-        return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(path = "/article/{id}", method = RequestMethod.DELETE) // @DeleteMapping
     public ResponseEntity<Object> deleteArticle(@PathVariable("id") Long id) {
         if (articleService.deleteArticle(id)) {
-            return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_SUCCESS_DELETE), HttpStatus.OK);
+            return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_SUCCESS_DELETE), HttpStatus.OK);
         }
-        return new ResponseEntity<>(new MessageModel(JsonUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(path = "/articles", method = RequestMethod.GET) // @GetMapping
