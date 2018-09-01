@@ -12,6 +12,7 @@ public class ArticleMapper {
         a.setTitle(am.getTitle());
         a.setContent(am.getContent());
         a.setCreationDate(am.getCreationDate());
+        a.setYear();
         a.setUser(UserMapper.mapToUser(am.getUserModel()));
         for (CommentModel cm : am.getCommentsModel()) {
             a.getComments().add(CommentMapper.mapToComment(cm));
@@ -25,6 +26,7 @@ public class ArticleMapper {
         am.setTitle(a.getTitle());
         am.setContent(a.getContent());
         am.setCreationDate(a.getCreationDate());
+        am.setYear();
         am.setUserModel(UserMapper.mapToUserModel(a.getUser()));
         for (Comment c : a.getComments()) {
             am.getCommentsModel().add(CommentMapper.mapToCommentModel(c));

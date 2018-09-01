@@ -25,15 +25,15 @@ public class ArticleController {
     @Autowired
     ArticleService articleService;
 
-//    @RequestMapping(path = "/article/{id}", method = RequestMethod.GET) // @GetMapping
-//    public ResponseEntity<Object> getArticle(@PathVariable("id") Long id) {
-//        Article a = articleService.getArticle(id);
-//        if (a != null) {
-//            ArticleModel am = ArticleMapper.mapToArticleModel(a);
-//            return new ResponseEntity<>(am, HttpStatus.OK);
-//        }
-//        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
-//    }
+    @RequestMapping(path = "/article/{id}", method = RequestMethod.GET) // @GetMapping
+    public ResponseEntity<Object> getArticle(@PathVariable("id") Long id) {
+        Article a = articleService.getArticle(id);
+        if (a != null) {
+            ArticleModel am = ArticleMapper.mapToArticleModel(a);
+            return new ResponseEntity<>(am, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
+    }
 
     @RequestMapping(path = "/article", method = RequestMethod.POST) // @PostMapping
     public ResponseEntity<Object> addArticle(@RequestBody ArticleModel am) {

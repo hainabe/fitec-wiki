@@ -57,12 +57,14 @@ public class Article implements Serializable {
         this.title = title;
         this.content = content;
         this.creationDate = creationDate;
+        this.year = getYear();
     }
 
     public Article(String title, String content, Date creationDate, StatusModel status) {
         this.title = title;
         this.content = content;
         this.creationDate = creationDate;
+        this.year = getYear();
         this.status = status;
     }
 
@@ -88,6 +90,6 @@ public class Article implements Serializable {
 
     @Override
     public String toString() {
-        return title + "[" + idArticle + "] " + content + " (" + creationDate + ")";
+        return title + "[" + idArticle + "] " + content + " (" + getYear() + ")";
     }
 }

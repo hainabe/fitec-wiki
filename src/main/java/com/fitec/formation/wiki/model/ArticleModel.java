@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -23,6 +25,7 @@ public class ArticleModel {
     private String content;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = MessageUtil.DATE_PATTERN)
     private Date creationDate;
+    private String year;
 
     private UserModel userModel;
     private List<CommentModel> commentsModel;
@@ -32,6 +35,7 @@ public class ArticleModel {
         this.title = title;
         this.content = content;
         this.creationDate = creationDate;
+        this.year = getYear();
     }
 
     public ArticleModel(Long idArticleModel, String title, String content, Date creationDate) {
@@ -39,12 +43,14 @@ public class ArticleModel {
         this.title = title;
         this.content = content;
         this.creationDate = creationDate;
+        this.year = getYear();
     }
 
     public ArticleModel(String title, String content, Date creationDate, StatusModel statusModel) {
         this.title = title;
         this.content = content;
         this.creationDate = creationDate;
+        this.year = getYear();
         this.statusModel = statusModel;
     }
 
@@ -53,11 +59,20 @@ public class ArticleModel {
         this.title = title;
         this.content = content;
         this.creationDate = creationDate;
+        this.year = getYear();
         this.statusModel = statusModel;
+    }
+
+    public void setYear() {
+        this.year = String.valueOf(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(this.creationDate)).getYear());
+    }
+
+    public String getYear() {
+        return String.valueOf(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(this.creationDate)).getYear());
     }
 
     @Override
     public String toString() {
-        return title + "[" + idArticleModel + "] " + content + " (" + creationDate + ")";
+        return title + "[" + idArticleModel + "] " + content + " (" + getYear() + ")";
     }
 }

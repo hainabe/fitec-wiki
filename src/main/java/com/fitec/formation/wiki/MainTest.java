@@ -44,24 +44,29 @@ public class MainTest implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.printf("MainTest.run");
+        System.out.printf("... ... ... ... MainTest.run ... ... ... ...");
 
         List<User> users = userTest.initUserSuite();
-        System.out.println(users);
         for (User u : users) {
             userService.addUser(u);
+            System.out.println("... USER: id = " + u.getIdUser());
         }
 
         List<Article> articles = articleTest.initArticleSuite();
-        System.out.println(articles);
         for (Article a : articles) {
             articleService.addArticle(a);
+            System.out.println("" +
+                    "... ... ARTICLE: id = " + a.getIdArticle() + " " +
+                    "... A_USER: id = " + a.getUser().getIdUser());
         }
 
         List<Comment> comments = commentTest.initCommentSuite();
-        System.out.println(comments);
         for (Comment c : comments) {
             commentService.addComment(c);
+            System.out.println("" +
+                    "... ... COMMENT: id = " + c.getIdComment() + " " +
+                    "... C_ARTICLE: id = " + c.getArticle().getIdArticle() + " " +
+                    "... C_USER: id = " + c.getUser().getIdUser());
         }
     }
 }
