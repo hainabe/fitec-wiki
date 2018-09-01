@@ -8,29 +8,30 @@ import com.fitec.formation.wiki.util.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping(name = "/api")
 public class UserController {
 
     @Autowired
     UserService userService;
 
-    @RequestMapping(path = "/user/{id}", method = RequestMethod.GET) // @GetMapping
+    @GetMapping("/user/{id}")
     public ResponseEntity<Object> getUser(@PathVariable("id") Long id) {
         User u = userService.getUser(id);
         if (u != null) {
             UserModel um = UserMapper.mapToUserModel(u);
             return new ResponseEntity<>(um, HttpStatus.OK);
         }
-        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @RequestMapping(path = "/user/{username}", method = RequestMethod.GET) // @GetMapping
+    @GetMapping("/user/{username}")
     public ResponseEntity<Object> getUser(@PathVariable("username") String username) {
         User u = userService.getUserByUsername(username);
         if (u != null) {
@@ -40,7 +41,7 @@ public class UserController {
         return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(path = "/user", method = RequestMethod.POST) // @PostMapping
+    @PostMapping("/user")
     public ResponseEntity<Object> addUser(@RequestBody UserModel um) {
         User u = UserMapper.mapToUser(um);
         if (userService.addUser(u)) {
@@ -49,7 +50,7 @@ public class UserController {
         return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_DB), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @RequestMapping(path = "/user/{id}", method = RequestMethod.PUT) // @PutMapping
+    @PutMapping("/user/{id}")
     public ResponseEntity<Object> updateUser(@PathVariable("id") Long id,
                                              @RequestBody UserModel um) {
         User u = UserMapper.mapToUser(um);
@@ -60,7 +61,7 @@ public class UserController {
         return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(path = "/user/{id}", method = RequestMethod.DELETE) // @DeleteMapping
+    @DeleteMapping("/user/{id}")
     public ResponseEntity<Object> deleteUser(@PathVariable("id") Long id) {
         if (userService.deleteUser(id)) {
             return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_SUCCESS_DELETE), HttpStatus.OK);
@@ -68,7 +69,7 @@ public class UserController {
         return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(path = "/users", method = RequestMethod.GET) // @GetMapping
+    @GetMapping("/users")
     public ResponseEntity<Object> getUsers() {
         List<User> users = userService.getUsers();
         List<UserModel> usersModel = new ArrayList<>();
@@ -78,7 +79,7 @@ public class UserController {
         return new ResponseEntity<>(usersModel, HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/users/{status}", method = RequestMethod.GET) // @GetMapping
+    @GetMapping("/users/{status}")
     public ResponseEntity<Object> getUsersByStatus(@PathVariable("status") String status) {
         StatusModel sm = StatusModel.getStatus(StatusModel.valueOf(status).getId());
         List<User> users = userService.getUsersByStatus(sm);
@@ -89,7 +90,7 @@ public class UserController {
         return new ResponseEntity<>(usersModel, HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/users/{profile}", method = RequestMethod.GET) // @GetMapping
+    @GetMapping("/users/{profile}")
     public ResponseEntity<Object> getUsersByProfile(@PathVariable("profile") String profile) {
         ProfileModel pm = ProfileModel.getProfile(ProfileModel.valueOf(profile).getId());
         List<User> users = userService.getUsersByProfile(pm);
@@ -100,7 +101,7 @@ public class UserController {
         return new ResponseEntity<>(usersModel, HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/mod/article/{id}", method = RequestMethod.PUT) // @PutMapping
+    @PutMapping("/mod/article/{id}")
     public ResponseEntity<Object> setStatusOfArticle(@PathVariable("id") Long id,
                                                      @RequestBody ArticleModel am,
                                                      @RequestBody StatusModel sm) {
@@ -113,7 +114,7 @@ public class UserController {
         return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(path = "/mod/comment/{id}", method = RequestMethod.PUT) // @PutMapping
+    @PutMapping("/mod/comment/{id}")
     public ResponseEntity<Object> setStatusOfComment(@PathVariable("id") Long id,
                                                      @RequestBody CommentModel cm,
                                                      @RequestBody StatusModel sm) {
@@ -126,7 +127,7 @@ public class UserController {
         return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(path = "/admin/user/{id}", method = RequestMethod.PUT) // @PutMapping
+    @PutMapping("/admin/user/{id}")
     public ResponseEntity<Object> setStatusOfUser(@PathVariable("id") Long id,
                                                   @RequestBody UserModel um,
                                                   @RequestBody StatusModel sm) {

@@ -12,20 +12,21 @@ import com.fitec.formation.wiki.util.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping(name = "/api")
 public class ArticleController {
 
     @Autowired
     ArticleService articleService;
 
-    @RequestMapping(path = "/article/{id}", method = RequestMethod.GET) // @GetMapping
+    @GetMapping("/article/{id}")
     public ResponseEntity<Object> getArticle(@PathVariable("id") Long id) {
         Article a = articleService.getArticle(id);
         if (a != null) {
@@ -35,7 +36,7 @@ public class ArticleController {
         return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(path = "/article", method = RequestMethod.POST) // @PostMapping
+    @PostMapping("/article")
     public ResponseEntity<Object> addArticle(@RequestBody ArticleModel am) {
         Article a = ArticleMapper.mapToArticle(am);
         if (articleService.addArticle(a)) {
@@ -44,7 +45,7 @@ public class ArticleController {
         return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_DB), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @RequestMapping(path = "/article/{id}", method = RequestMethod.PUT) // @PutMapping
+    @PutMapping("/article/{id}")
     public ResponseEntity<Object> updateArticle(@PathVariable("id") Long id,
                                                 @RequestBody ArticleModel am) {
         Article a = ArticleMapper.mapToArticle(am);
@@ -55,7 +56,7 @@ public class ArticleController {
         return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(path = "/article/{id}", method = RequestMethod.DELETE) // @DeleteMapping
+    @DeleteMapping("/article/{id}")
     public ResponseEntity<Object> deleteArticle(@PathVariable("id") Long id) {
         if (articleService.deleteArticle(id)) {
             return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_SUCCESS_DELETE), HttpStatus.OK);
@@ -63,7 +64,7 @@ public class ArticleController {
         return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(path = "/articles", method = RequestMethod.GET) // @GetMapping
+    @GetMapping("/articles")
     public ResponseEntity<Object> getArticles() {
         List<Article> articles = articleService.getArticles();
         List<ArticleModel> articlesModel = new ArrayList<>();
@@ -73,7 +74,7 @@ public class ArticleController {
         return new ResponseEntity<>(articlesModel, HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/articles/{status}", method = RequestMethod.GET) // @GetMapping
+    @GetMapping("/articles/{status}")
     public ResponseEntity<Object> getArticlesByStatus(@PathVariable("status") String status) {
         StatusModel sm = StatusModel.getStatus(StatusModel.valueOf(status).getId());
         List<Article> articles = articleService.getArticlesByStatus(sm);
@@ -84,7 +85,7 @@ public class ArticleController {
         return new ResponseEntity<>(articlesModel, HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/articles/{username}", method = RequestMethod.GET) // @GetMapping
+    @GetMapping("/articles/{username}")
     public ResponseEntity<Object> getArticlesByUser(@PathVariable("username") String username) {
         List<Article> articles = articleService.getArticlesByUser(username);
         List<ArticleModel> articlesModel = new ArrayList<>();
@@ -94,7 +95,7 @@ public class ArticleController {
         return new ResponseEntity<>(articlesModel, HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/articles/{year}", method = RequestMethod.GET) // @GetMapping
+    @GetMapping("/articles/{year}")
     public ResponseEntity<Object> getArticlesByYear(@PathVariable("year") String strYear) {
         List<Article> articles = articleService.getArticlesByYear(strYear);
         List<ArticleModel> articlesModel = new ArrayList<>();

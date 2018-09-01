@@ -17,7 +17,6 @@ import java.util.Date;
 @AllArgsConstructor
 public class UserLoggerModel {
 
-    private Long idUserLoggerModel;
     private String email;
     private String username;
     private String password;
@@ -31,22 +30,8 @@ public class UserLoggerModel {
         this.password = password;
     }
 
-    public UserLoggerModel(Long idUserLoggerModel, String username, String password, Date creationDate) {
-        this.idUserLoggerModel = idUserLoggerModel;
-        this.username = username;
-        this.password = password;
-    }
-
-    public UserLoggerModel(String email, String username, String password, Date creationDate, ProfileModel profileModel) {
-        this.email = email;
-        this.username = username;
-        this.password = password;
-        this.creationDate = creationDate;
-        this.profileModel = profileModel;
-    }
-
     @Override
     public String toString() {
-        return username + " " + password + " [" + idUserLoggerModel + "] " + profileModel + " (" + creationDate + ")";
+        return username + " " + password + " [] " + profileModel + " (" + creationDate + ")";
     }
 }

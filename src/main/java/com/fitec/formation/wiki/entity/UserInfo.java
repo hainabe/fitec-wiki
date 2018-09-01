@@ -19,10 +19,6 @@ public class UserInfo implements Serializable {
 
     private static final Long serialVersionUID = 1L;
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "ID_USER_INFORMATION")
-//    private Long idUserInfo;
     @Column(name = "FIRSTNAME")
     private String firstname;
     @Column(name = "LASTNAME")

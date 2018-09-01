@@ -20,10 +20,6 @@ public class UserLogger implements Serializable {
 
     private static final Long serialVersionUID = 1L;
 
-    //    @Id
-    //    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //    @Column(name = "ID_USER_LOGGER")
-    //    private Long idUserLogger;
     @Column(name = "EMAIL")
     private String email;
     @Column(name = "USERNAME")

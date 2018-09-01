@@ -17,7 +17,6 @@ import java.util.Date;
 @AllArgsConstructor
 public class UserInfoModel {
 
-    private Long idUserInfoModel;
     private String firstname;
     private String lastname;
     private String phone;
@@ -25,26 +24,9 @@ public class UserInfoModel {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = MessageUtil.DATE_PATTERN)
     private Date birthday;
 
-    public UserInfoModel(String firstname, String lastname, String phone, AddressModel addressModel, Date birthday) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.phone = phone;
-        this.addressModel = addressModel;
-        this.birthday = birthday;
-    }
-
-    public UserInfoModel(Long idUserInfoModel, String firstname, String lastname, String email, String phone, AddressModel addressModel, Date birthday) {
-        this.idUserInfoModel = idUserInfoModel;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.phone = phone;
-        this.addressModel = addressModel;
-        this.birthday = birthday;
-    }
-
     @Override
     public String toString() {
-        return firstname + " " + lastname + " [" + idUserInfoModel + "]\n" +
+        return firstname + " " + lastname + " []\n" +
                 phone + " (" + birthday + ")\n" +
                 addressModel;
     }

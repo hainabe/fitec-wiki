@@ -20,7 +20,6 @@ import java.util.List;
 @AllArgsConstructor
 public class ArticleModel {
 
-    private Long idArticleModel;
     private String title;
     private String content;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = MessageUtil.DATE_PATTERN)
@@ -38,24 +37,7 @@ public class ArticleModel {
         this.year = getYear();
     }
 
-    public ArticleModel(Long idArticleModel, String title, String content, Date creationDate) {
-        this.idArticleModel = idArticleModel;
-        this.title = title;
-        this.content = content;
-        this.creationDate = creationDate;
-        this.year = getYear();
-    }
-
     public ArticleModel(String title, String content, Date creationDate, StatusModel statusModel) {
-        this.title = title;
-        this.content = content;
-        this.creationDate = creationDate;
-        this.year = getYear();
-        this.statusModel = statusModel;
-    }
-
-    public ArticleModel(Long idArticleModel, String title, String content, Date creationDate, StatusModel statusModel) {
-        this.idArticleModel = idArticleModel;
         this.title = title;
         this.content = content;
         this.creationDate = creationDate;
@@ -73,6 +55,6 @@ public class ArticleModel {
 
     @Override
     public String toString() {
-        return title + "[" + idArticleModel + "] " + content + " (" + getYear() + ")";
+        return title + "[] " + content + " (" + getYear() + ")";
     }
 }

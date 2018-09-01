@@ -10,6 +10,7 @@ import lombok.Setter;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Getter
@@ -18,7 +19,6 @@ import java.util.List;
 @AllArgsConstructor
 public class CommentModel {
 
-    private Long idComment;
     private String title;
     private String content;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = MessageUtil.DATE_PATTERN)
@@ -36,13 +36,6 @@ public class CommentModel {
         this.creationDate = creationDate;
     }
 
-    public CommentModel(Long idComment, String title, String content, Date creationDate) {
-        this.idComment = idComment;
-        this.title = title;
-        this.content = content;
-        this.creationDate = creationDate;
-    }
-
     public CommentModel(String title, String content, Date creationDate, StatusModel statusModel) {
         this.title = title;
         this.content = content;
@@ -50,16 +43,12 @@ public class CommentModel {
         this.statusModel = statusModel;
     }
 
-    public CommentModel(Long idComment, String title, String content, Date creationDate, StatusModel statusModel) {
-        this.idComment = idComment;
-        this.title = title;
-        this.content = content;
-        this.creationDate = creationDate;
-        this.statusModel = statusModel;
+    public boolean isParent() {
+        return Objects.nonNull(parentCommentModel);
     }
 
     @Override
     public String toString() {
-        return title + "[" + parentCommentModel.getIdComment() + ", " + idComment + "] " + content + " (" + creationDate + ")";
+        return title + "[" + isParent() + "] " + content + " (" + creationDate + ")";
     }
 }

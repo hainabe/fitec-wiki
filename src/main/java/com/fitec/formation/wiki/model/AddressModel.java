@@ -13,22 +13,14 @@ import lombok.Setter;
 @AllArgsConstructor
 public class AddressModel {
 
-    private Long idAddressModel;
     private String street;
     private String city;
     private String zipcode;
     private String country;
 
-    public AddressModel(String street, String city, String zipcode, String country) {
-        this.street = street;
-        this.city = city;
-        this.zipcode = zipcode;
-        this.country = country;
-    }
-
     @Override
     public String toString() {
-        return "\t[" + idAddressModel + "]\n\t" +
+        return "\t[]\n\t" +
                 street + "\n\t" +
                 zipcode + " - " + city + "\n\t" +
                 country;
