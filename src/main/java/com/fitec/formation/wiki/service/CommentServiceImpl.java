@@ -31,54 +31,54 @@ public class CommentServiceImpl implements CommentService {
         return result;
     }
 
-//    @Override
-//    public Comment getComment(Long id) {
-//        Comment comment = commentRepository.getOne(id);
-//        return comment;
-//    }
-//
-//    @Override
-//    public boolean updateComment(Comment oldC) {
-//        boolean result = false;
-//        Comment targetComment = commentRepository.getOne(oldC.getIdComment());
-//        if (Objects.nonNull(oldC) && commentRepository.existsById(oldC.getIdComment())) {
-//            BeanUtils.copyProperties(oldC, targetComment, propertyUtil.getNullPropertyNames(oldC));
-//            result = Objects.nonNull(commentRepository.save(targetComment));
-//            System.out.println(MessageUtil.COMMENT_SUCCESS_UPDATED);
-//        } else {
-//            System.out.println(MessageUtil.COMMENT_ERROR_NULL_DONT_EXIST);
-//        }
-//        return result;
-//    }
-//
-//    @Override
-//    public boolean deleteComment(Long id) {
-//        boolean result = false;
-//        if (commentRepository.existsById(id)) {
-//            commentRepository.delete(getComment(id));
-//            result = true;
-//            System.out.println(MessageUtil.COMMENT_SUCCESS_DELETED);
-//        } else {
-//            System.out.println(MessageUtil.COMMENT_ERROR_DONT_EXIST);
-//        }
-//        return result;
-//    }
-//
-//    @Override
-//    public List<Comment> getComments() {
-//        List<Comment> comments = commentRepository.findAll();
-//        return comments;
-//    }
-//
-//    @Override
-//    public List<Comment> getCommentsByParent(Comment parentComment) {
-//        List<Comment> comments = commentRepository.findByParentComment(parentComment);
-//        return comments;
-//    }
-//
-//    @Override
-//    public List<Comment> getCommentsByUser(String username) {
-//        List<Comment> comments = commentRepository.findByUser_UserLogin_UserName(username);
-//        return comments;
-//    }
+    @Override
+    public Comment getComment(Long id) {
+        Comment comment = commentRepository.getOne(id);
+        return comment;
+    }
+
+    @Override
+    public boolean updateComment(Comment oldC) {
+        boolean result = false;
+        Comment targetComment = commentRepository.getOne(oldC.getIdComment());
+        if (Objects.nonNull(oldC) && commentRepository.existsById(oldC.getIdComment())) {
+            BeanUtils.copyProperties(oldC, targetComment, propertyUtil.getNullPropertyNames(oldC));
+            result = Objects.nonNull(commentRepository.save(targetComment));
+            System.out.println(MessageUtil.COMMENT_SUCCESS_UPDATED);
+        } else {
+            System.out.println(MessageUtil.COMMENT_ERROR_NULL_DONT_EXIST);
+        }
+        return result;
+    }
+
+    @Override
+    public boolean deleteComment(Long id) {
+        boolean result = false;
+        if (commentRepository.existsById(id)) {
+            commentRepository.delete(getComment(id));
+            result = true;
+            System.out.println(MessageUtil.COMMENT_SUCCESS_DELETED);
+        } else {
+            System.out.println(MessageUtil.COMMENT_ERROR_DONT_EXIST);
+        }
+        return result;
+    }
+
+    @Override
+    public List<Comment> getComments() {
+        List<Comment> comments = commentRepository.findAll();
+        return comments;
+    }
+
+    @Override
+    public List<Comment> getCommentsByParent(Comment parentComment) {
+        List<Comment> comments = commentRepository.getCommentsByParent(parentComment);
+        return comments;
+    }
+
+    @Override
+    public List<Comment> getCommentsByUser(String username) {
+        List<Comment> comments = commentRepository.getCommentsByUser(username);
+        return comments;
+    }
 }

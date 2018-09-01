@@ -1,5 +1,6 @@
 package com.fitec.formation.wiki.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Address implements Serializable {
 
     private static final Long serialVersionUID = 1L;
@@ -29,13 +31,6 @@ public class Address implements Serializable {
     private String zipcode;
     @Column(name = "COUNTRY")
     private String country;
-
-    public Address(String street, String city, String zipcode, String country) {
-        this.street = street;
-        this.city = city;
-        this.zipcode = zipcode;
-        this.country = country;
-    }
 
     @Override
     public String toString() {

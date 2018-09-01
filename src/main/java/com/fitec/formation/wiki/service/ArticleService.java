@@ -1,7 +1,7 @@
 package com.fitec.formation.wiki.service;
 
 import com.fitec.formation.wiki.entity.Article;
-import com.fitec.formation.wiki.entity.Status;
+import com.fitec.formation.wiki.model.StatusModel;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,18 +11,18 @@ public interface ArticleService {
 
     boolean addArticle(Article a);
 
-//    Article getArticle(Long id);
-//
-//    boolean updateArticle(Article a);
-//
-//    boolean deleteArticle(Long id);
-//
-//    List<Article> getArticles();
-//
-//    List<Article> getArticlesByStatus(Status status);
-//
-//    List<Article> getArticlesByUser(String username);
-//
-//    List<Article> getArticlesByYear(String strYear);
+    Article getArticle(Long id);
+
+    boolean updateArticle(Article a);
+
+    boolean deleteArticle(Long id);
+
+    List<Article> getArticles();
+
+    List<Article> getArticlesByStatus(StatusModel status);
+
+    List<Article> getArticlesByUser(String username);
+
+    List<Article> getArticlesByYear(String strYear);
 
 }

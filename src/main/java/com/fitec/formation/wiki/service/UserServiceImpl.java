@@ -1,6 +1,8 @@
 package com.fitec.formation.wiki.service;
 
 import com.fitec.formation.wiki.entity.*;
+import com.fitec.formation.wiki.model.ProfileModel;
+import com.fitec.formation.wiki.model.StatusModel;
 import com.fitec.formation.wiki.repository.UserRepository;
 import com.fitec.formation.wiki.util.MessageUtil;
 import com.fitec.formation.wiki.util.PropertyUtil;
@@ -31,80 +33,79 @@ public class UserServiceImpl implements UserService {
         return result;
     }
 
-//    @Override
-//    public User getUser(Long id) {
-//        User user = userRepository.getOne(id);
-//        return user;
-//    }
-//
-//    @Override
-//    public User getUserByUsername(String username) {
-//        User user = userRepository.findByUserLogin_UserName(username);
-//        return user;
-//    }
-//
-//    @Override
-//    public boolean updateUser(User oldU) {
-//        boolean result = false;
-//        User targetUser = userRepository.getOne(oldU.getIdUser());
-//        if (Objects.nonNull(oldU) && userRepository.existsById(oldU.getIdUser())) {
-//            BeanUtils.copyProperties(oldU, targetUser, propertyUtil.getNullPropertyNames(oldU));
-//            result = Objects.nonNull(userRepository.save(targetUser));
-//            System.out.println(MessageUtil.USER_SUCCESS_UPDATED);
-//        } else {
-//            System.out.println(MessageUtil.USER_ERROR_NULL_DONT_EXIST);
-//        }
-//        return result;
-//    }
-//
-//    @Override
-//    public boolean deleteUser(Long id) {
-//        boolean result = false;
-//        if (userRepository.existsById(id)) {
-//            userRepository.delete(getUser(id));
-//            result = true;
-//            System.out.println(MessageUtil.USER_SUCCESS_DELETED);
-//        } else {
-//            System.out.println(MessageUtil.USER_ERROR_DONT_EXIST);
-//        }
-//        return result;
-//    }
-//
-//    @Override
-//    public List<User> getUsers() {
-//        List<User> users = userRepository.findAll();
-//        return users;
-//    }
-//
-//    @Override
-//    public List<User> getUsersByStatus(Status status) {
-//        List<User> users = userRepository.findByStatus(status);
-//        return users;
-//    }
-//
-//    @Override
-//    public List<User> getUsersByProfile(Profile profile) {
-//        List<User> users = userRepository.findByUserLogin_Profile(profile);
-//        return users;
-//    }
-//
-//    @Override
-//    public boolean setStatus(Object object, Status status) {
-//        boolean result = false;
-//        if (Objects.nonNull(object) && Objects.nonNull(status)) {
-//            if (Objects.equals(object.getClass(), Article.class)) {
-//                ((Article) object).setStatus(status);
-//            } else if (Objects.equals(object.getClass(), Comment.class)) {
-//                ((Comment) object).setStatus(status);
-//            } else if (Objects.equals(object.getClass(), User.class)) {
-//                ((User) object).setStatus(status);
-//            }
-//            result = true;
-//            System.out.println(MessageUtil.USER_SUCCESS_SET_STATUS);
-//        } else {
-//            System.out.println(MessageUtil.USER_ERROR_SET_STATUS);
-//        }
-//        return result;
-//    }
+    @Override
+    public User getUser(Long id) {
+        User user = userRepository.getOne(id);
+        return user;
+    }
 
+    @Override
+    public User getUserByUsername(String username) {
+        User user = userRepository.getUserByUsername(username);
+        return user;
+    }
+
+    @Override
+    public boolean updateUser(User oldU) {
+        boolean result = false;
+        User targetUser = userRepository.getOne(oldU.getIdUser());
+        if (Objects.nonNull(oldU) && userRepository.existsById(oldU.getIdUser())) {
+            BeanUtils.copyProperties(oldU, targetUser, propertyUtil.getNullPropertyNames(oldU));
+            result = Objects.nonNull(userRepository.save(targetUser));
+            System.out.println(MessageUtil.USER_SUCCESS_UPDATED);
+        } else {
+            System.out.println(MessageUtil.USER_ERROR_NULL_DONT_EXIST);
+        }
+        return result;
+    }
+
+    @Override
+    public boolean deleteUser(Long id) {
+        boolean result = false;
+        if (userRepository.existsById(id)) {
+            userRepository.delete(getUser(id));
+            result = true;
+            System.out.println(MessageUtil.USER_SUCCESS_DELETED);
+        } else {
+            System.out.println(MessageUtil.USER_ERROR_DONT_EXIST);
+        }
+        return result;
+    }
+
+    @Override
+    public List<User> getUsers() {
+        List<User> users = userRepository.findAll();
+        return users;
+    }
+
+    @Override
+    public List<User> getUsersByStatus(StatusModel status) {
+        List<User> users = userRepository.getUsersByStatus(status);
+        return users;
+    }
+
+    @Override
+    public List<User> getUsersByProfile(ProfileModel profile) {
+        List<User> users = userRepository.getUsersByProfile(profile);
+        return users;
+    }
+
+    @Override
+    public boolean setStatus(Object object, StatusModel status) {
+        boolean result = false;
+        if (Objects.nonNull(object) && Objects.nonNull(status)) {
+            if (Objects.equals(object.getClass(), Article.class)) {
+                ((Article) object).setStatus(status);
+            } else if (Objects.equals(object.getClass(), Comment.class)) {
+                ((Comment) object).setStatus(status);
+            } else if (Objects.equals(object.getClass(), User.class)) {
+                ((User) object).setStatus(status);
+            }
+            result = true;
+            System.out.println(MessageUtil.USER_SUCCESS_SET_STATUS);
+        } else {
+            System.out.println(MessageUtil.USER_ERROR_SET_STATUS);
+        }
+        return result;
+    }
 }

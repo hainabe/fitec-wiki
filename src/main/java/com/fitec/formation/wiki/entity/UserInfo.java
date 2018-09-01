@@ -1,5 +1,6 @@
 package com.fitec.formation.wiki.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class UserInfo implements Serializable {
 
     private static final Long serialVersionUID = 1L;
@@ -34,14 +36,6 @@ public class UserInfo implements Serializable {
     @Embedded
     @Column(name = "ADDRESS")
     private Address address;
-
-    public UserInfo(String firstname, String lastname, String phone, Date birthday, Address address) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.phone = phone;
-        this.birthday = birthday;
-        this.address = address;
-    }
 
     @Override
     public String toString() {

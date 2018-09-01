@@ -1,11 +1,16 @@
 package com.fitec.formation.wiki.entity;
 
+import com.fitec.formation.wiki.model.StatusModel;
+import com.fitec.formation.wiki.util.DateUtil;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -14,6 +19,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Article implements Serializable {
 
     private static final Long serialVersionUID = 1L;
@@ -29,9 +35,19 @@ public class Article implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "CREATION_DATE")
     private Date creationDate;
+    @Column(name = "YEAR_RECORD")
+    private String year;
 
-    @ManyToOne
-    private Status status;
+    //    @JoinTable(name = "ARTICLE_STATUS", joinColumns = {
+    //            @JoinColumn(name = "ID_ARTICLE")}, inverseJoinColumns = {
+    //            @JoinColumn(name = "ID_STATUS")})
+    //-------------------------------------------------------------------------
+    //    @ManyToOne(cascade = CascadeType.ALL)
+    //    @JoinColumn(name = "ARTICLE_STATUS", referencedColumnName = "VALUE")
+    //-------------------------------------------------------------------------
+    @Enumerated(EnumType.STRING)
+    @Column(name = "STATUS")
+    private StatusModel status;
     @ManyToOne
     private User user;
     @OneToMany(mappedBy = "article", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -43,11 +59,31 @@ public class Article implements Serializable {
         this.creationDate = creationDate;
     }
 
-    public Article(String title, String content, Date creationDate, Status status) {
+    public Article(String title, String content, Date creationDate, StatusModel status) {
         this.title = title;
         this.content = content;
         this.creationDate = creationDate;
         this.status = status;
+    }
+
+    public StatusModel getStatus() {
+        return StatusModel.getStatus(this.status.getId());
+    }
+
+    public void setStatus(StatusModel sm) {
+        if (sm == null) {
+            this.status = null;
+        } else {
+            this.status = sm;
+        }
+    }
+
+    public void setYear() {
+        this.year = String.valueOf(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(this.creationDate)).getYear());
+    }
+
+    public String getYear() {
+        return String.valueOf(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(this.creationDate)).getYear());
     }
 
     @Override

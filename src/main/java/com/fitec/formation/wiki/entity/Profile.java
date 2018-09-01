@@ -1,9 +1,11 @@
 package com.fitec.formation.wiki.entity;
 
 import com.fitec.formation.wiki.model.ProfileModel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.PersistenceConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,6 +15,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Profile implements Serializable {
 
     private static final Long serialVersionUID = 1L;
@@ -25,6 +28,7 @@ public class Profile implements Serializable {
     @Column(name = "VALUE")
     private ProfileModel profile;
 
+    @PersistenceConstructor
     public Profile(ProfileModel profile) {
         this.profile = profile;
     }
@@ -34,9 +38,3 @@ public class Profile implements Serializable {
         return profile + " [" + idProfile + "]";
     }
 }
-
-//public enum ProfileEnum {
-//    ADMIN,
-//    MOD,
-//    USER
-//}

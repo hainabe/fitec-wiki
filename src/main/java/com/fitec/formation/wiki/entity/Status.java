@@ -1,9 +1,11 @@
 package com.fitec.formation.wiki.entity;
 
 import com.fitec.formation.wiki.model.StatusModel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.PersistenceConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,6 +15,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Status implements Serializable {
 
     private static final Long serialVersionUID = 1L;
@@ -25,6 +28,7 @@ public class Status implements Serializable {
     @Column(name = "VALUE")
     private StatusModel status;
 
+    @PersistenceConstructor
     public Status(StatusModel status) {
         this.status = status;
     }
@@ -34,18 +38,3 @@ public class Status implements Serializable {
         return status + " [" + idStatus + "]";
     }
 }
-
-//enum StatusEnum {
-//    STATUS_ARTICLE_APPROVED,
-//    STATUS_ARTICLE_UNAPPROVED,
-//    STATUS_ARTICLE_SUBMITTED,
-//    STATUS_ARTICLE_DISABLED,
-//
-//    STATUS_USER_CONNECTED,
-//    STATUS_USER_DISCONNECTED,
-//    STATUS_USER_BANNED,
-//    STATUS_USER_DISABLED,
-//
-//    STATUS_COMMENT_ENABLED,
-//    STATUS_COMMENT_DISABLED
-//}

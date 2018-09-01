@@ -1,6 +1,7 @@
 package com.fitec.formation.wiki.test;
 
 import com.fitec.formation.wiki.entity.UserLogger;
+import com.fitec.formation.wiki.model.ProfileModel;
 import com.fitec.formation.wiki.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,8 +14,6 @@ public class UserLoggerTest {
 
     @Autowired
     DateUtil dateUtil;
-    @Autowired
-    ProfileTest profileTest;
 
     public List<UserLogger> initUserLoggerSuite() {
         List<UserLogger> usersLogger = new ArrayList<>();
@@ -24,7 +23,7 @@ public class UserLoggerTest {
         ul01.setUsername("username01");
         ul01.setPassword("password01");
         ul01.setCreationDate(dateUtil.formatDate("01-01-2011"));
-        ul01.setProfile(profileTest.initProfileSuite().get(0));
+        ul01.setProfile(ProfileModel.ADMIN);
         usersLogger.add(ul01);
 
         final UserLogger ul02 = new UserLogger();
@@ -32,7 +31,7 @@ public class UserLoggerTest {
         ul02.setUsername("username02");
         ul02.setPassword("password02");
         ul02.setCreationDate(dateUtil.formatDate("02-02-2012"));
-        ul02.setProfile(profileTest.initProfileSuite().get(1));
+        ul02.setProfile(ProfileModel.MOD);
         usersLogger.add(ul02);
 
         final UserLogger ul03 = new UserLogger();
@@ -40,7 +39,7 @@ public class UserLoggerTest {
         ul03.setUsername("username03");
         ul03.setPassword("password03");
         ul03.setCreationDate(dateUtil.formatDate("03-03-2013"));
-        ul03.setProfile(profileTest.initProfileSuite().get(2));
+        ul03.setProfile(ProfileModel.USER);
         usersLogger.add(ul03);
 
         System.out.println("initUserLoggerSuite() = " + !usersLogger.isEmpty());

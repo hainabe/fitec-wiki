@@ -11,7 +11,7 @@ public class UserLoggerMapper {
         ul.setUsername(ulm.getUsername());
         ul.setPassword(ulm.getPassword());
         ul.setCreationDate(ulm.getCreationDate());
-        ul.setProfile(ProfileMapper.mapToProfile(ulm.getProfileModel()));
+        ul.setProfile(ulm.getProfileModel());
         return ul;
     }
 
@@ -21,7 +21,7 @@ public class UserLoggerMapper {
         ulm.setUsername(ul.getUsername());
         ulm.setPassword(ul.getPassword());
         ulm.setCreationDate(ul.getCreationDate());
-        ulm.setProfileModel(ProfileMapper.mapToProfileModel(ul.getProfile()));
+        ulm.setProfileModel(ul.getProfile());
         return ulm;
     }
 }

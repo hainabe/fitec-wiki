@@ -19,7 +19,7 @@ public class UserMapper {
         for (CommentModel cm : um.getCommentsModel()) {
             u.getComments().add(CommentMapper.mapToComment(cm));
         }
-        u.setStatus(StatusMapper.mapToStatus(um.getStatusModel()));
+        u.setStatus(um.getStatusModel());
         return u;
     }
 
@@ -33,7 +33,7 @@ public class UserMapper {
         for (Comment c : u.getComments()) {
             um.getCommentsModel().add(CommentMapper.mapToCommentModel(c));
         }
-        um.setStatusModel(StatusMapper.mapToStatusModel(u.getStatus()));
+        um.setStatusModel(u.getStatus());
         return um;
     }
 }

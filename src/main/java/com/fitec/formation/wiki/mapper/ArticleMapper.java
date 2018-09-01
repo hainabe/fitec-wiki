@@ -16,7 +16,7 @@ public class ArticleMapper {
         for (CommentModel cm : am.getCommentsModel()) {
             a.getComments().add(CommentMapper.mapToComment(cm));
         }
-        a.setStatus(StatusMapper.mapToStatus(am.getStatusModel()));
+        a.setStatus(am.getStatusModel());
         return a;
     }
 
@@ -29,7 +29,7 @@ public class ArticleMapper {
         for (Comment c : a.getComments()) {
             am.getCommentsModel().add(CommentMapper.mapToCommentModel(c));
         }
-        am.setStatusModel(StatusMapper.mapToStatusModel(a.getStatus()));
+        am.setStatusModel(a.getStatus());
         return am;
     }
 }

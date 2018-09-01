@@ -1,5 +1,7 @@
 package com.fitec.formation.wiki.entity;
 
+import com.fitec.formation.wiki.model.StatusModel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,6 +16,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Comment implements Serializable {
 
     private static final Long serialVersionUID = 1L;
@@ -30,8 +33,16 @@ public class Comment implements Serializable {
     @Column(name = "CREATION_DATE")
     private Date creationDate;
 
-    @ManyToOne
-    private Status status;
+    //    @JoinTable(name = "COMMENT_STATUS", joinColumns = {
+    //            @JoinColumn(name = "ID_COMMENT")}, inverseJoinColumns = {
+    //            @JoinColumn(name = "ID_STATUS")})
+    //-------------------------------------------------------------------------
+    //    @ManyToOne(cascade = CascadeType.ALL)
+    //    @JoinColumn(name = "COMMENT_STATUS", referencedColumnName = "VALUE")
+    //-------------------------------------------------------------------------
+    @Enumerated(EnumType.STRING)
+    @Column(name = "STATUS")
+    private StatusModel status;
     @ManyToOne
     private Article article;
     @ManyToOne
@@ -49,11 +60,23 @@ public class Comment implements Serializable {
         this.creationDate = creationDate;
     }
 
-    public Comment(String title, String content, Date creationDate, Status status) {
+    public Comment(String title, String content, Date creationDate, StatusModel status) {
         this.title = title;
         this.content = content;
         this.creationDate = creationDate;
         this.status = status;
+    }
+
+    public StatusModel getStatus() {
+        return StatusModel.getStatus(this.status.getId());
+    }
+
+    public void setStatus(StatusModel sm) {
+        if (sm == null) {
+            this.status = null;
+        } else {
+            this.status = sm;
+        }
     }
 
     @Override

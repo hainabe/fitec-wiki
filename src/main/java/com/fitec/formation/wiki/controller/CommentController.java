@@ -21,15 +21,15 @@ public class CommentController {
     @Autowired
     CommentService commentService;
 
-//    @RequestMapping(path = "/comment/{id}", method = RequestMethod.GET) // @GetMapping
-//    public ResponseEntity<Object> getComment(@PathVariable("id") Long id) {
-//        Comment c = commentService.getComment(id);
-//        if (c != null) {
-//            CommentModel cm = CommentMapper.mapToCommentModel(c);
-//            return new ResponseEntity<>(cm, HttpStatus.OK);
-//        }
-//        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
-//    }
+    @RequestMapping(path = "/comment/{id}", method = RequestMethod.GET) // @GetMapping
+    public ResponseEntity<Object> getComment(@PathVariable("id") Long id) {
+        Comment c = commentService.getComment(id);
+        if (c != null) {
+            CommentModel cm = CommentMapper.mapToCommentModel(c);
+            return new ResponseEntity<>(cm, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
+    }
 
     @RequestMapping(path = "/comment", method = RequestMethod.POST) // @PostMapping
     public ResponseEntity<Object> addComment(@RequestBody CommentModel cm) {
@@ -40,54 +40,53 @@ public class CommentController {
         return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_DB), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-//    @RequestMapping(path = "/comment/{id}", method = RequestMethod.PUT) // @PutMapping
-//    public ResponseEntity<Object> updateComment(@PathVariable("id") Long id,
-//                                                @RequestBody CommentModel cm) {
-//        Comment c = CommentMapper.mapToComment(cm);
-//        c.setIdComment(id);
-//        if (commentService.updateComment(c)) {
-//            return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_SUCCESS_UPDATE), HttpStatus.OK);
-//        }
-//        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
-//    }
-//
-//    @RequestMapping(path = "/comment/{id}", method = RequestMethod.DELETE) // @DeleteMapping
-//    public ResponseEntity<Object> deleteComment(@PathVariable("id") Long id) {
-//        if (commentService.deleteComment(id)) {
-//            return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_SUCCESS_DELETE), HttpStatus.OK);
-//        }
-//        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
-//    }
-//
-//    @RequestMapping(path = "/comments", method = RequestMethod.GET) // @GetMapping
-//    public ResponseEntity<Object> getComments() {
-//        List<Comment> comments = commentService.getComments();
-//        List<CommentModel> commentsModel = new ArrayList<>();
-//        for (Comment c : comments) {
-//            commentsModel.add(CommentMapper.mapToCommentModel(c));
-//        }
-//        return new ResponseEntity<>(commentsModel, HttpStatus.OK);
-//    }
-//
-//    @RequestMapping(path = "/comments/{id}", method = RequestMethod.GET) // @GetMapping
-//    public ResponseEntity<Object> getCommentsByParent(@PathVariable("id") Long idParent) {
-//        Comment cParent = commentService.getComment(idParent);
-//        List<Comment> comments = commentService.getCommentsByParent(cParent);
-//        List<CommentModel> commentsModel = new ArrayList<>();
-//        for (Comment c : comments) {
-//            commentsModel.add(CommentMapper.mapToCommentModel(c));
-//        }
-//        return new ResponseEntity<>(commentsModel, HttpStatus.OK);
-//    }
-//
-//    @RequestMapping(path = "/comments/{username}", method = RequestMethod.GET) // @GetMapping
-//    public ResponseEntity<Object> getCommentsByUser(@PathVariable("username") String username) {
-//        List<Comment> comments = commentService.getCommentsByUser(username);
-//        List<CommentModel> commentsModel = new ArrayList<>();
-//        for (Comment c : comments) {
-//            commentsModel.add(CommentMapper.mapToCommentModel(c));
-//        }
-//        return new ResponseEntity<>(commentsModel, HttpStatus.OK);
-//    }
+    @RequestMapping(path = "/comment/{id}", method = RequestMethod.PUT) // @PutMapping
+    public ResponseEntity<Object> updateComment(@PathVariable("id") Long id,
+                                                @RequestBody CommentModel cm) {
+        Comment c = CommentMapper.mapToComment(cm);
+        c.setIdComment(id);
+        if (commentService.updateComment(c)) {
+            return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_SUCCESS_UPDATE), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
+    }
 
+    @RequestMapping(path = "/comment/{id}", method = RequestMethod.DELETE) // @DeleteMapping
+    public ResponseEntity<Object> deleteComment(@PathVariable("id") Long id) {
+        if (commentService.deleteComment(id)) {
+            return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_SUCCESS_DELETE), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(new MessageModel(MessageUtil.MSG_ERROR_NOT_FOUND), HttpStatus.NOT_FOUND);
+    }
+
+    @RequestMapping(path = "/comments", method = RequestMethod.GET) // @GetMapping
+    public ResponseEntity<Object> getComments() {
+        List<Comment> comments = commentService.getComments();
+        List<CommentModel> commentsModel = new ArrayList<>();
+        for (Comment c : comments) {
+            commentsModel.add(CommentMapper.mapToCommentModel(c));
+        }
+        return new ResponseEntity<>(commentsModel, HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/comments/{id}", method = RequestMethod.GET) // @GetMapping
+    public ResponseEntity<Object> getCommentsByParent(@PathVariable("id") Long idParent) {
+        Comment cParent = commentService.getComment(idParent);
+        List<Comment> comments = commentService.getCommentsByParent(cParent);
+        List<CommentModel> commentsModel = new ArrayList<>();
+        for (Comment c : comments) {
+            commentsModel.add(CommentMapper.mapToCommentModel(c));
+        }
+        return new ResponseEntity<>(commentsModel, HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/comments/{username}", method = RequestMethod.GET) // @GetMapping
+    public ResponseEntity<Object> getCommentsByUser(@PathVariable("username") String username) {
+        List<Comment> comments = commentService.getCommentsByUser(username);
+        List<CommentModel> commentsModel = new ArrayList<>();
+        for (Comment c : comments) {
+            commentsModel.add(CommentMapper.mapToCommentModel(c));
+        }
+        return new ResponseEntity<>(commentsModel, HttpStatus.OK);
+    }
 }

@@ -1,5 +1,7 @@
 package com.fitec.formation.wiki.entity;
 
+import com.fitec.formation.wiki.model.ProfileModel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,14 +15,15 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class UserLogger implements Serializable {
 
     private static final Long serialVersionUID = 1L;
 
     //    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "ID_USER_LOGGER")
-//    private Long idUserLogger;
+    //    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //    @Column(name = "ID_USER_LOGGER")
+    //    private Long idUserLogger;
     @Column(name = "EMAIL")
     private String email;
     @Column(name = "USERNAME")
@@ -31,20 +34,32 @@ public class UserLogger implements Serializable {
     @Column(name = "CREATION_DATE")
     private Date creationDate;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Profile profile;
+    //    @JoinTable(name = "USER_LOGGER_PROFILE", joinColumns = {
+    //            @JoinColumn(name = "ID_USER_LOGGER")}, inverseJoinColumns = {
+    //            @JoinColumn(name = "ID_PROFILE")})
+    //-------------------------------------------------------------------------
+    //    @ManyToOne(cascade = CascadeType.ALL)
+    //    @JoinColumn(name = "USER_LOGGER_PROFILE", referencedColumnName = "VALUE")
+    //-------------------------------------------------------------------------
+    @Enumerated(EnumType.STRING)
+    @Column(name = "PROFILE")
+    private ProfileModel profile;
 
     public UserLogger(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
-    public UserLogger(String email, String username, String password, Date creationDate, Profile profile) {
-        this.email = email;
-        this.username = username;
-        this.password = password;
-        this.creationDate = creationDate;
-        this.profile = profile;
+    public ProfileModel getProfile() {
+        return ProfileModel.getProfile(this.profile.getId());
+    }
+
+    public void setProfile(ProfileModel pm) {
+        if (pm == null) {
+            this.profile = null;
+        } else {
+            this.profile = pm;
+        }
     }
 
     @Override
