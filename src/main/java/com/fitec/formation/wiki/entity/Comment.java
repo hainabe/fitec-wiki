@@ -10,6 +10,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "T_COMMENT")
@@ -79,8 +80,12 @@ public class Comment implements Serializable {
         }
     }
 
+    public boolean isParent() {
+        return Objects.nonNull(parentComment);
+    }
+
     @Override
     public String toString() {
-        return title + "[" + parentComment.getIdComment() + ", " + idComment + "] " + content + " (" + creationDate + ")";
+        return title + "[" + isParent() + ", " + idComment + "] " + content + " (" + creationDate + ")";
     }
 }

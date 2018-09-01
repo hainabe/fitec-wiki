@@ -3,7 +3,9 @@ package com.fitec.formation.wiki.test;
 import com.fitec.formation.wiki.entity.Article;
 import com.fitec.formation.wiki.entity.Comment;
 import com.fitec.formation.wiki.model.StatusModel;
+import com.fitec.formation.wiki.service.ArticleService;
 import com.fitec.formation.wiki.service.CommentService;
+import com.fitec.formation.wiki.service.UserService;
 import com.fitec.formation.wiki.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,9 +19,9 @@ public class CommentTest {
     @Autowired
     DateUtil dateUtil;
     @Autowired
-    ArticleTest articleTest;
+    ArticleService articleService;
     @Autowired
-    UserTest userTest;
+    UserService userService;
 
     public List<Comment> initCommentSuite() {
         List<Comment> comments = new ArrayList<>();
@@ -36,8 +38,8 @@ public class CommentTest {
         c11.setContent("content11");
         c11.setCreationDate(dateUtil.formatDate("01-01-2011"));
         c11.setStatus(StatusModel.STATUS_COMMENT_ENABLED);
-        c11.setArticle(articleTest.initArticleSuite().get(0));
-        c11.setUser(userTest.initUserSuite().get(0));
+        c11.setArticle(articleService.getArticle(1L));
+        c11.setUser(userService.getUser(1L));
         c11.setParentComment(null);
 
         final Comment c12 = new Comment();
@@ -45,8 +47,8 @@ public class CommentTest {
         c12.setContent("content12");
         c12.setCreationDate(dateUtil.formatDate("02-02-2012"));
         c12.setStatus(StatusModel.STATUS_COMMENT_ENABLED);
-        c12.setArticle(articleTest.initArticleSuite().get(0));
-        c12.setUser(userTest.initUserSuite().get(1));
+        c12.setArticle(articleService.getArticle(1L));
+        c12.setUser(userService.getUser(2L));
         c12.setParentComment(c11);
         c12.setChildComments(null);
 
@@ -55,8 +57,8 @@ public class CommentTest {
         c13.setContent("content13");
         c13.setCreationDate(dateUtil.formatDate("03-03-2013"));
         c13.setStatus(StatusModel.STATUS_COMMENT_DISABLED);
-        c13.setArticle(articleTest.initArticleSuite().get(0));
-        c13.setUser(userTest.initUserSuite().get(2));
+        c13.setArticle(articleService.getArticle(1L));
+        c13.setUser(userService.getUser(3L));
         c13.setParentComment(c11);
         c13.setChildComments(null);
 
@@ -77,8 +79,8 @@ public class CommentTest {
         c21.setContent("content21");
         c21.setCreationDate(dateUtil.formatDate("01-01-2011"));
         c21.setStatus(StatusModel.STATUS_COMMENT_ENABLED);
-        c21.setArticle(articleTest.initArticleSuite().get(1));
-        c21.setUser(userTest.initUserSuite().get(0));
+        c21.setArticle(articleService.getArticle(2L));
+        c21.setUser(userService.getUser(1L));
         c21.setParentComment(null);
 
         final Comment c22 = new Comment();
@@ -86,8 +88,8 @@ public class CommentTest {
         c22.setContent("content22");
         c22.setCreationDate(dateUtil.formatDate("02-02-2012"));
         c22.setStatus(StatusModel.STATUS_COMMENT_ENABLED);
-        c22.setArticle(articleTest.initArticleSuite().get(1));
-        c22.setUser(userTest.initUserSuite().get(1));
+        c22.setArticle(articleService.getArticle(2L));
+        c22.setUser(userService.getUser(2L));
         c22.setParentComment(c21);
         c22.setChildComments(null);
 
@@ -96,8 +98,8 @@ public class CommentTest {
         c23.setContent("content23");
         c23.setCreationDate(dateUtil.formatDate("03-03-2013"));
         c23.setStatus(StatusModel.STATUS_COMMENT_DISABLED);
-        c23.setArticle(articleTest.initArticleSuite().get(1));
-        c23.setUser(userTest.initUserSuite().get(2));
+        c23.setArticle(articleService.getArticle(2L));
+        c23.setUser(userService.getUser(3L));
         c23.setParentComment(c21);
         c23.setChildComments(null);
 
@@ -118,8 +120,8 @@ public class CommentTest {
         c31.setContent("content31");
         c31.setCreationDate(dateUtil.formatDate("01-01-2011"));
         c31.setStatus(StatusModel.STATUS_COMMENT_ENABLED);
-        c31.setArticle(articleTest.initArticleSuite().get(2));
-        c31.setUser(userTest.initUserSuite().get(0));
+        c31.setArticle(articleService.getArticle(3L));
+        c31.setUser(userService.getUser(1L));
         c31.setParentComment(null);
 
         final Comment c32 = new Comment();
@@ -127,8 +129,8 @@ public class CommentTest {
         c32.setContent("content32");
         c32.setCreationDate(dateUtil.formatDate("02-02-2012"));
         c32.setStatus(StatusModel.STATUS_COMMENT_ENABLED);
-        c32.setArticle(articleTest.initArticleSuite().get(2));
-        c32.setUser(userTest.initUserSuite().get(1));
+        c32.setArticle(articleService.getArticle(3L));
+        c32.setUser(userService.getUser(2L));
         c32.setParentComment(c31);
         c32.setChildComments(null);
 
@@ -137,8 +139,8 @@ public class CommentTest {
         c33.setContent("content33");
         c33.setCreationDate(dateUtil.formatDate("03-03-2013"));
         c33.setStatus(StatusModel.STATUS_COMMENT_DISABLED);
-        c33.setArticle(articleTest.initArticleSuite().get(2));
-        c33.setUser(userTest.initUserSuite().get(2));
+        c33.setArticle(articleService.getArticle(3L));
+        c33.setUser(userService.getUser(3L));
         c33.setParentComment(c31);
         c33.setChildComments(null);
 
