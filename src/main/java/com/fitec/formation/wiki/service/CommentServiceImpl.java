@@ -24,9 +24,9 @@ public class CommentServiceImpl implements CommentService {
         boolean result = false;
         if (Objects.nonNull(c)) {
             result = Objects.nonNull(commentRepository.save(c));
-            System.out.println(MessageUtil.COMMENT_SUCCESS_ADDED);
+            System.out.println(MessageUtil.MSG_SUCCESS_ADD);
         } else {
-            System.out.println(MessageUtil.COMMENT_ERROR_NULL);
+            System.out.println(MessageUtil.MSG_ERROR_NULL);
         }
         return result;
     }
@@ -44,9 +44,9 @@ public class CommentServiceImpl implements CommentService {
         if (Objects.nonNull(oldC) && commentRepository.existsById(oldC.getIdComment())) {
             BeanUtils.copyProperties(oldC, targetComment, propertyUtil.getNullPropertyNames(oldC));
             result = Objects.nonNull(commentRepository.save(targetComment));
-            System.out.println(MessageUtil.COMMENT_SUCCESS_UPDATED);
+            System.out.println(MessageUtil.MSG_SUCCESS_UPDATE);
         } else {
-            System.out.println(MessageUtil.COMMENT_ERROR_NULL_DONT_EXIST);
+            System.out.println(MessageUtil.MSG_ERROR_NULL_NOT_FOUND);
         }
         return result;
     }
@@ -57,9 +57,9 @@ public class CommentServiceImpl implements CommentService {
         if (commentRepository.existsById(id)) {
             commentRepository.delete(getComment(id));
             result = true;
-            System.out.println(MessageUtil.COMMENT_SUCCESS_DELETED);
+            System.out.println(MessageUtil.MSG_SUCCESS_DELETE);
         } else {
-            System.out.println(MessageUtil.COMMENT_ERROR_DONT_EXIST);
+            System.out.println(MessageUtil.MSG_ERROR_NOT_FOUND);
         }
         return result;
     }

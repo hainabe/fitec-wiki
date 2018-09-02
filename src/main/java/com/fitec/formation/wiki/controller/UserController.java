@@ -1,7 +1,11 @@
 package com.fitec.formation.wiki.controller;
 
-import com.fitec.formation.wiki.entity.*;
-import com.fitec.formation.wiki.mapper.*;
+import com.fitec.formation.wiki.entity.Article;
+import com.fitec.formation.wiki.entity.Comment;
+import com.fitec.formation.wiki.entity.User;
+import com.fitec.formation.wiki.mapper.ArticleMapper;
+import com.fitec.formation.wiki.mapper.CommentMapper;
+import com.fitec.formation.wiki.mapper.UserMapper;
 import com.fitec.formation.wiki.model.*;
 import com.fitec.formation.wiki.service.UserService;
 import com.fitec.formation.wiki.util.MessageUtil;
@@ -14,8 +18,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin(origins = MessageUtil.CROSS_ORIGIN)
 @Controller
-@RequestMapping(name = "/api")
+@RequestMapping("/api")
 public class UserController {
 
     @Autowired

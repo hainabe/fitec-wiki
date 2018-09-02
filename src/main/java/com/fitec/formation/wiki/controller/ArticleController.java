@@ -1,9 +1,7 @@
 package com.fitec.formation.wiki.controller;
 
 import com.fitec.formation.wiki.entity.Article;
-import com.fitec.formation.wiki.entity.Status;
 import com.fitec.formation.wiki.mapper.ArticleMapper;
-import com.fitec.formation.wiki.mapper.StatusMapper;
 import com.fitec.formation.wiki.model.ArticleModel;
 import com.fitec.formation.wiki.model.MessageModel;
 import com.fitec.formation.wiki.model.StatusModel;
@@ -16,11 +14,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
+@CrossOrigin(origins = MessageUtil.CROSS_ORIGIN)
 @Controller
-@RequestMapping(name = "/api")
+@RequestMapping("/api")
 public class ArticleController {
 
     @Autowired

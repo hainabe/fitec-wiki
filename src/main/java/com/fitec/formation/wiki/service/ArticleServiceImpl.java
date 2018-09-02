@@ -1,7 +1,6 @@
 package com.fitec.formation.wiki.service;
 
 import com.fitec.formation.wiki.entity.Article;
-import com.fitec.formation.wiki.entity.Status;
 import com.fitec.formation.wiki.model.StatusModel;
 import com.fitec.formation.wiki.repository.ArticleRepository;
 import com.fitec.formation.wiki.util.MessageUtil;
@@ -26,9 +25,9 @@ public class ArticleServiceImpl implements ArticleService {
         boolean result = false;
         if (Objects.nonNull(a)) {
             result = Objects.nonNull(articleRepository.save(a));
-            System.out.println(MessageUtil.ARTICLE_SUCCESS_ADDED);
+            System.out.println(MessageUtil.MSG_SUCCESS_ADD);
         } else {
-            System.out.println(MessageUtil.ARTICLE_ERROR_NULL);
+            System.out.println(MessageUtil.MSG_ERROR_NULL);
         }
         return result;
     }
@@ -46,9 +45,9 @@ public class ArticleServiceImpl implements ArticleService {
         if (Objects.nonNull(oldA) && articleRepository.existsById(oldA.getIdArticle())) {
             BeanUtils.copyProperties(oldA, targetArticle, propertyUtil.getNullPropertyNames(oldA));
             result = Objects.nonNull(articleRepository.save(targetArticle));
-            System.out.println(MessageUtil.ARTICLE_SUCCESS_UPDATED);
+            System.out.println(MessageUtil.MSG_SUCCESS_UPDATE);
         } else {
-            System.out.println(MessageUtil.ARTICLE_ERROR_NULL_DONT_EXIST);
+            System.out.println(MessageUtil.MSG_ERROR_NULL_NOT_FOUND);
         }
         return result;
     }
@@ -59,9 +58,9 @@ public class ArticleServiceImpl implements ArticleService {
         if (articleRepository.existsById(id)) {
             articleRepository.delete(getArticle(id));
             result = true;
-            System.out.println(MessageUtil.ARTICLE_SUCCESS_DELETED);
+            System.out.println(MessageUtil.MSG_SUCCESS_DELETE);
         } else {
-            System.out.println(MessageUtil.ARTICLE_ERROR_DONT_EXIST);
+            System.out.println(MessageUtil.MSG_ERROR_NOT_FOUND);
         }
         return result;
     }

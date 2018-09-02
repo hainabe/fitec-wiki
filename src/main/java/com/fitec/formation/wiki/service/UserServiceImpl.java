@@ -26,9 +26,9 @@ public class UserServiceImpl implements UserService {
         boolean result = false;
         if (Objects.nonNull(u)) {
             result = userRepository.save(u) != null;
-            System.out.println(MessageUtil.USER_SUCCESS_ADDED);
+            System.out.println(MessageUtil.MSG_SUCCESS_ADD);
         } else {
-            System.out.println(MessageUtil.USER_ERROR_NULL);
+            System.out.println(MessageUtil.MSG_ERROR_NULL);
         }
         return result;
     }
@@ -52,9 +52,9 @@ public class UserServiceImpl implements UserService {
         if (Objects.nonNull(oldU) && userRepository.existsById(oldU.getIdUser())) {
             BeanUtils.copyProperties(oldU, targetUser, propertyUtil.getNullPropertyNames(oldU));
             result = Objects.nonNull(userRepository.save(targetUser));
-            System.out.println(MessageUtil.USER_SUCCESS_UPDATED);
+            System.out.println(MessageUtil.MSG_SUCCESS_UPDATE);
         } else {
-            System.out.println(MessageUtil.USER_ERROR_NULL_DONT_EXIST);
+            System.out.println(MessageUtil.MSG_ERROR_NULL_NOT_FOUND);
         }
         return result;
     }
@@ -65,9 +65,9 @@ public class UserServiceImpl implements UserService {
         if (userRepository.existsById(id)) {
             userRepository.delete(getUser(id));
             result = true;
-            System.out.println(MessageUtil.USER_SUCCESS_DELETED);
+            System.out.println(MessageUtil.MSG_SUCCESS_DELETE);
         } else {
-            System.out.println(MessageUtil.USER_ERROR_DONT_EXIST);
+            System.out.println(MessageUtil.MSG_ERROR_NOT_FOUND);
         }
         return result;
     }
@@ -102,9 +102,9 @@ public class UserServiceImpl implements UserService {
                 ((User) object).setStatus(status);
             }
             result = true;
-            System.out.println(MessageUtil.USER_SUCCESS_SET_STATUS);
+            System.out.println(MessageUtil.MSG_SUCCESS_SET_STATUS);
         } else {
-            System.out.println(MessageUtil.USER_ERROR_SET_STATUS);
+            System.out.println(MessageUtil.MSG_ERROR_SET_STATUS);
         }
         return result;
     }

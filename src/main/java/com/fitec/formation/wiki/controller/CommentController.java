@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin(origins = MessageUtil.CROSS_ORIGIN)
 @Controller
-@RequestMapping(name = "/api")
+@RequestMapping("/api")
 public class CommentController {
 
     @Autowired
