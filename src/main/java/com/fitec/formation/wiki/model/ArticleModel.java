@@ -46,7 +46,7 @@ public class ArticleModel {
     }
 
     public void setYear() {
-        this.year = String.valueOf(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(this.creationDate)).getYear());
+        this.year = getYear();
     }
 
     public String getYear() {
@@ -55,6 +55,6 @@ public class ArticleModel {
 
     @Override
     public String toString() {
-        return title + "[] " + content + " (" + getYear() + ")";
+        return title + "[] " + content + " (" + creationDate + ")";
     }
 }

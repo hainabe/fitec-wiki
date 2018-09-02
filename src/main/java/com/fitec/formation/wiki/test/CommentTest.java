@@ -1,10 +1,8 @@
 package com.fitec.formation.wiki.test;
 
-import com.fitec.formation.wiki.entity.Article;
 import com.fitec.formation.wiki.entity.Comment;
 import com.fitec.formation.wiki.model.StatusModel;
 import com.fitec.formation.wiki.service.ArticleService;
-import com.fitec.formation.wiki.service.CommentService;
 import com.fitec.formation.wiki.service.UserService;
 import com.fitec.formation.wiki.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;

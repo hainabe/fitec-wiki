@@ -82,7 +82,7 @@ public class CommentController {
         return new ResponseEntity<>(commentsModel, HttpStatus.OK);
     }
 
-    @GetMapping("/comments/{username}")
+    @GetMapping("/comments/u/{username}")
     public ResponseEntity<Object> getCommentsByUser(@PathVariable("username") String username) {
         List<Comment> comments = commentService.getCommentsByUser(username);
         List<CommentModel> commentsModel = new ArrayList<>();

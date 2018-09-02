@@ -3,6 +3,7 @@ package com.fitec.formation.wiki.service;
 import com.fitec.formation.wiki.entity.Article;
 import com.fitec.formation.wiki.model.StatusModel;
 import com.fitec.formation.wiki.repository.ArticleRepository;
+import com.fitec.formation.wiki.util.DateUtil;
 import com.fitec.formation.wiki.util.MessageUtil;
 import com.fitec.formation.wiki.util.PropertyUtil;
 import org.springframework.beans.BeanUtils;
@@ -17,6 +18,8 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Autowired
     ArticleRepository articleRepository;
+    @Autowired
+    DateUtil dateUtil;
     @Autowired
     PropertyUtil propertyUtil;
 

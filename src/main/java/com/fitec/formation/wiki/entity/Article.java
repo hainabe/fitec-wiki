@@ -1,7 +1,6 @@
 package com.fitec.formation.wiki.entity;
 
 import com.fitec.formation.wiki.model.StatusModel;
-import com.fitec.formation.wiki.util.DateUtil;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,7 +34,7 @@ public class Article implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "CREATION_DATE")
     private Date creationDate;
-    @Column(name = "YEAR_RECORD")
+    @Column(name = "YEAR")
     private String year;
 
     //    @JoinTable(name = "ARTICLE_STATUS", joinColumns = {
@@ -81,7 +80,7 @@ public class Article implements Serializable {
     }
 
     public void setYear() {
-        this.year = String.valueOf(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(this.creationDate)).getYear());
+        this.year = getYear();
     }
 
     public String getYear() {
@@ -90,6 +89,6 @@ public class Article implements Serializable {
 
     @Override
     public String toString() {
-        return title + "[" + idArticle + "] " + content + " (" + getYear() + ")";
+        return title + "[" + idArticle + "] " + content + " (" + creationDate + ")";
     }
 }

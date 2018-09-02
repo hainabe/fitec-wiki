@@ -84,7 +84,7 @@ public class UserController {
         return new ResponseEntity<>(usersModel, HttpStatus.OK);
     }
 
-    @GetMapping("/users/{status}")
+    @GetMapping("/users/s/{status}")
     public ResponseEntity<Object> getUsersByStatus(@PathVariable("status") String status) {
         StatusModel sm = StatusModel.getStatus(StatusModel.valueOf(status).getId());
         List<User> users = userService.getUsersByStatus(sm);
@@ -95,7 +95,7 @@ public class UserController {
         return new ResponseEntity<>(usersModel, HttpStatus.OK);
     }
 
-    @GetMapping("/users/{profile}")
+    @GetMapping("/users/p/{profile}")
     public ResponseEntity<Object> getUsersByProfile(@PathVariable("profile") String profile) {
         ProfileModel pm = ProfileModel.getProfile(ProfileModel.valueOf(profile).getId());
         List<User> users = userService.getUsersByProfile(pm);

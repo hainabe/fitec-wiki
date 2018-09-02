@@ -72,7 +72,7 @@ public class ArticleController {
         return new ResponseEntity<>(articlesModel, HttpStatus.OK);
     }
 
-    @GetMapping("/articles/{status}")
+    @GetMapping("/articles/s/{status}")
     public ResponseEntity<Object> getArticlesByStatus(@PathVariable("status") String status) {
         StatusModel sm = StatusModel.getStatus(StatusModel.valueOf(status).getId());
         List<Article> articles = articleService.getArticlesByStatus(sm);
@@ -83,7 +83,7 @@ public class ArticleController {
         return new ResponseEntity<>(articlesModel, HttpStatus.OK);
     }
 
-    @GetMapping("/articles/{username}")
+    @GetMapping("/articles/u/{username}")
     public ResponseEntity<Object> getArticlesByUser(@PathVariable("username") String username) {
         List<Article> articles = articleService.getArticlesByUser(username);
         List<ArticleModel> articlesModel = new ArrayList<>();
@@ -93,7 +93,7 @@ public class ArticleController {
         return new ResponseEntity<>(articlesModel, HttpStatus.OK);
     }
 
-    @GetMapping("/articles/{year}")
+    @GetMapping("/articles/y/{year}")
     public ResponseEntity<Object> getArticlesByYear(@PathVariable("year") String strYear) {
         List<Article> articles = articleService.getArticlesByYear(strYear);
         List<ArticleModel> articlesModel = new ArrayList<>();
